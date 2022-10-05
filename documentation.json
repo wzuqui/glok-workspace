@@ -1,0 +1,438 @@
+{
+    "pipes": [],
+    "interfaces": [],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "GlokBotaoComponent",
+            "id": "component-GlokBotaoComponent-4c7b50391d57d5f96cb983a6c2027224f9f6f8e76770fdd701842727409b7f23b783cc56718ca4b8d5e9ff5859e2b3914a26909db22342fb60aaa8c85a45e5f2",
+            "file": "projects/glok-biblioteca/src/lib/glok-botao/glok-botao.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-botao",
+            "styleUrls": [
+                "./glok-botao.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-botao.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "texto",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 13,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'glok-botao',\n  templateUrl: './glok-botao.component.html',\n  styleUrls: ['./glok-botao.component.scss']\n})\nexport class GlokBotaoComponent implements OnInit {\n  @Input() public texto: string = '';\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n  display: flex;\r\n}\r\n",
+                    "styleUrl": "./glok-botao.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 9
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "{{ texto }}\n"
+        },
+        {
+            "name": "GlokMenuComponent",
+            "id": "component-GlokMenuComponent-3d919cdeee69d5d09773199b8dc42c5df9f0b5d5ad40ab8e1dffd981bd27aa2bf592d4b21c42983e9f3608bde16eea92ff8dfe0c4d56f542787c3f4882efcef9",
+            "file": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-glok-menu",
+            "styleUrls": [
+                "./glok-menu.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-menu.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "aberto",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'class.aberto'"
+                        }
+                    ],
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "tabindex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'tabindex'"
+                        }
+                    ],
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "acaoMenuItemClicou",
+                    "args": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "acaoObscurecer",
+                    "args": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'blur', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "class.aberto",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "tabindex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [
+                {
+                    "name": "blur",
+                    "args": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, HostListener, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-glok-menu',\n  templateUrl: './glok-menu.component.html',\n  styleUrls: ['./glok-menu.component.scss']\n})\nexport class GlokMenuComponent implements OnInit {\n  @HostBinding('tabindex')\n  public tabindex = 0;\n\n  @HostBinding(\"class.aberto\")\n  public aberto = false;\n\n  constructor() { }\n\n  public ngOnInit(): void {\n  }\n\n  @HostListener(\"blur\", [\"$event\"])\n  public acaoObscurecer(evento: Event) {\n    this.aberto = false;\n  }\n\n  public acaoMenuItemClicou(evento: Event) {\n    this.aberto = false;\n    console.log(evento.currentTarget);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n  display: block;\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n  font-size: 14px;\r\n  position: relative;\r\n  user-select: none;\r\n\r\n  .botao {\r\n    background-color: purple;\r\n    color: #FFF;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 18px;\r\n    padding: 5px 10px;\r\n  }\r\n\r\n  .menu {\r\n    background-color: aliceblue;\r\n    display: none;\r\n    left: 0;\r\n    position: absolute;\r\n    top: 34px;\r\n\r\n    .agrupador {\r\n      display: flex;\r\n      flex-direction: column;\r\n\r\n      > div {\r\n        padding: 10px;\r\n      }\r\n\r\n      .menu-agrupador {\r\n        background-color: rgb(159, 198, 233);\r\n\r\n        &::after {\r\n          content: '▼';\r\n          float: right;\r\n        }\r\n      }\r\n\r\n      .menu-item {\r\n        &:hover {\r\n          cursor: pointer;\r\n          background-color: rgba(129, 135, 141, 0.842);\r\n          text-decoration: underline;\r\n        }\r\n        &:active {\r\n          background-color: rgba(89, 105, 121, 0.842);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n\r\n  &:focus.aberto {\r\n    .botao {\r\n      background-color: rgb(83, 0, 83);\r\n    }\r\n    .menu {\r\n      display: unset;\r\n    }\r\n  }\r\n}\r\n",
+                    "styleUrl": "./glok-menu.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 13
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"botao\" (click)=\"aberto=!aberto\">\n  ☰\n</div>\n<div class=\"menu\">\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Cadastros</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Pessoas</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Veículos</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Equipamento</div>\n  </div>\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Relatórios</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Histórico</div>\n  </div>\n</div>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "GlokBibliotecaModule",
+            "id": "module-GlokBibliotecaModule-0910103a0103ca20328a6ebfdbeeeab5b51a209d477586aa3cc2823a1731335a2e6cc73ad9b1523eedb2d9627d4a077f68dc069c4b9e8e79ec352b8501d24d7e",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "projects/glok-biblioteca/src/lib/glok-biblioteca.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { GlokMenuComponent } from './glok-menu/glok-menu.component';\nimport { GlokBotaoComponent } from './glok-botao/glok-botao.component';\n\n@NgModule({\n  declarations: [GlokMenuComponent, GlokBotaoComponent],\n  imports: [],\n  exports: [GlokMenuComponent],\n})\nexport class GlokBibliotecaModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "GlokBotaoComponent"
+                        },
+                        {
+                            "name": "GlokMenuComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "GlokMenuComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/glok-biblioteca/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "projects/glok-biblioteca/src/test.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "literal type"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "projects/glok-biblioteca/src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/glok-biblioteca/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "projects/glok-biblioteca/src/test.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 0,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-botao/glok-botao.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokBotaoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokMenuComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

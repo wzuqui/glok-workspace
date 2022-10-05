@@ -1,0 +1,13 @@
+<glok-botao class="botao" (clicou)="aberto=!aberto">☰</glok-botao>
+<div class="menu">
+  <div class="agrupador">
+    <div class="menu-agrupador">Cadastros</div>
+    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Pessoas</div>
+    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Veículos</div>
+    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Equipamento</div>
+  </div>
+  <div class="agrupador">
+    <div class="menu-agrupador">Relatórios</div>
+    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Histórico</div>
+  </div>
+</div>

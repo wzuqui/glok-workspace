@@ -1,0 +1,59 @@
+:host {
+  display: block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  position: relative;
+  user-select: none;
+
+  .botao {
+    background-color: purple;
+    color: #FFF;
+  }
+
+  .menu {
+    background-color: aliceblue;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 34px;
+
+    .agrupador {
+      display: flex;
+      flex-direction: column;
+
+      > div {
+        padding: 10px;
+      }
+
+      .menu-agrupador {
+        background-color: rgb(159, 198, 233);
+
+        &::after {
+          content: '▼';
+          float: right;
+        }
+      }
+
+      .menu-item {
+        &:hover {
+          cursor: pointer;
+          background-color: rgba(129, 135, 141, 0.842);
+          text-decoration: underline;
+        }
+        &:active {
+          background-color: rgba(89, 105, 121, 0.842);
+        }
+      }
+    }
+  }
+
+
+  &:focus.aberto {
+    .botao {
+      background-color: rgb(83, 0, 83);
+    }
+    .menu {
+      display: unset;
+    }
+  }
+}

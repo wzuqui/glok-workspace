@@ -7,6 +7,11 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
+    "paths": {
+      "glok-biblioteca": [
+        "dist/glok-biblioteca"
+      ]
+    },
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
