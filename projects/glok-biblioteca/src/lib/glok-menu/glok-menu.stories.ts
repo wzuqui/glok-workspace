@@ -3,7 +3,7 @@ import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 import {
   componentWrapperDecorator,
   moduleMetadata,
-  storiesOf
+  storiesOf,
 } from '@storybook/angular';
 import { GlokBibliotecaModule } from '../glok-biblioteca.module';
 import { GlokMenuComponent } from './glok-menu.component';
@@ -13,7 +13,9 @@ import { GlokMenuComponent } from './glok-menu.component';
   template: `
     <h1>Mock App</h1>
     <ng-content></ng-content>
-    <router-outlet></router-outlet>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
   `,
 })
 class MockAppComponent {
@@ -38,7 +40,7 @@ const rotas = ['pessoas', 'veiculos', 'equipamentos', 'historico'].map(
     ({
       path: rota,
       data: {
-        rota: rota
+        rota: rota,
       },
       component: MockRotaComponent,
     } as Route)
@@ -50,16 +52,19 @@ storiesOf('menu', module)
       declarations: [MockAppComponent],
       imports: [
         GlokBibliotecaModule,
-        RouterModule.forRoot([
-          ...rotas,
+        RouterModule.forRoot(
+          [
+            ...rotas,
+            {
+              path: '**',
+              pathMatch: 'full',
+              redirectTo: '',
+            },
+          ],
           {
-            path: '**',
-            pathMatch: 'full',
-            redirectTo: '',
-          },
-        ], {
-          // enableTracing: true
-        }),
+            // enableTracing: true
+          }
+        ),
       ],
     })
   )
