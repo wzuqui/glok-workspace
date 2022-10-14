@@ -9,7 +9,7 @@
     "components": [
         {
             "name": "GlokBotaoComponent",
-            "id": "component-GlokBotaoComponent-4c7b50391d57d5f96cb983a6c2027224f9f6f8e76770fdd701842727409b7f23b783cc56718ca4b8d5e9ff5859e2b3914a26909db22342fb60aaa8c85a45e5f2",
+            "id": "component-GlokBotaoComponent-c0260ec4a4dad1291afeca0cd614f62b0bc688a8c28a49c0d07c0be29775e1b21465a05dc95cb5019dd0e4ceac14996e264973da95c2806bdc13b76c2ec68ebf",
             "file": "projects/glok-biblioteca/src/lib/glok-botao/glok-botao.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -36,16 +36,62 @@
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "clicou",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [
+                {
+                    "name": "acaoClicou",
+                    "args": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'click', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 13,
+                    "line": 14,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -53,15 +99,33 @@
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
-            "hostListeners": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18
+                }
+            ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'glok-botao',\n  templateUrl: './glok-botao.component.html',\n  styleUrls: ['./glok-botao.component.scss']\n})\nexport class GlokBotaoComponent implements OnInit {\n  @Input() public texto: string = '';\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'glok-botao',\n  templateUrl: './glok-botao.component.html',\n  styleUrls: ['./glok-botao.component.scss']\n})\nexport class GlokBotaoComponent implements OnInit {\n  @Input() public texto: string = '';\n  @Output() public clicou = new EventEmitter<Event>();\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  @HostListener('click', ['$event'])\n  public acaoClicou(evento: Event) {\n    this.clicou.emit(evento);\n  }\n\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n  display: flex;\r\n}\r\n",
+                    "data": ":host {\n  --border-color: #d8d8d8;\n  --background-color: #f3f3f3;\n  --background-color-lighter: #ffffff;\n  --background-color-darker: #dbdbdb;\n\n  background-color: var(--background-color);\n  border: 1px solid var(--border-color);\n  cursor: pointer;\n  display: inline-block;\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\n  font-size: 18px;\n  padding: 5px 10px;\n  user-select: none;\n  border-radius: 3px;\n  transition: background-color 300ms linear;\n\n  &:hover{\n    background-color: var(--background-color-lighter);\n  }\n  &:active {\n    background-color: var(--background-color-darker);\n  }\n}\n",
                     "styleUrl": "./glok-botao.component.scss"
                 }
             ],
@@ -72,12 +136,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 9
+                "line": 10
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "{{ texto }}\n"
+            "templateData": "<ng-content></ng-content>\n{{ texto }}\n"
         },
         {
             "name": "GlokMenuComponent",
@@ -270,7 +334,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\r\n  display: block;\r\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\r\n  font-size: 14px;\r\n  position: relative;\r\n  user-select: none;\r\n\r\n  .botao {\r\n    background-color: purple;\r\n    color: #FFF;\r\n    cursor: pointer;\r\n    display: inline-block;\r\n    font-size: 18px;\r\n    padding: 5px 10px;\r\n  }\r\n\r\n  .menu {\r\n    background-color: aliceblue;\r\n    display: none;\r\n    left: 0;\r\n    position: absolute;\r\n    top: 34px;\r\n\r\n    .agrupador {\r\n      display: flex;\r\n      flex-direction: column;\r\n\r\n      > div {\r\n        padding: 10px;\r\n      }\r\n\r\n      .menu-agrupador {\r\n        background-color: rgb(159, 198, 233);\r\n\r\n        &::after {\r\n          content: '▼';\r\n          float: right;\r\n        }\r\n      }\r\n\r\n      .menu-item {\r\n        &:hover {\r\n          cursor: pointer;\r\n          background-color: rgba(129, 135, 141, 0.842);\r\n          text-decoration: underline;\r\n        }\r\n        &:active {\r\n          background-color: rgba(89, 105, 121, 0.842);\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n\r\n  &:focus.aberto {\r\n    .botao {\r\n      background-color: rgb(83, 0, 83);\r\n    }\r\n    .menu {\r\n      display: unset;\r\n    }\r\n  }\r\n}\r\n",
+                    "data": ":host {\n  display: block;\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\n  font-size: 14px;\n  position: relative;\n  user-select: none;\n\n  .botao {\n    background-color: purple;\n    color: #FFF;\n  }\n\n  .menu {\n    background-color: aliceblue;\n    display: none;\n    left: 0;\n    position: absolute;\n    top: 34px;\n\n    .agrupador {\n      display: flex;\n      flex-direction: column;\n\n      > div {\n        padding: 10px;\n      }\n\n      .menu-agrupador {\n        background-color: rgb(159, 198, 233);\n\n        &::after {\n          content: '▼';\n          float: right;\n        }\n      }\n\n      .menu-item {\n        &:hover {\n          cursor: pointer;\n          background-color: rgba(129, 135, 141, 0.842);\n          text-decoration: underline;\n        }\n        &:active {\n          background-color: rgba(89, 105, 121, 0.842);\n        }\n      }\n    }\n  }\n\n\n  &:focus.aberto {\n    .botao {\n      background-color: rgb(83, 0, 83);\n    }\n    .menu {\n      display: unset;\n    }\n  }\n}\n",
                     "styleUrl": "./glok-menu.component.scss"
                 }
             ],
@@ -286,7 +350,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"botao\" (click)=\"aberto=!aberto\">\n  ☰\n</div>\n<div class=\"menu\">\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Cadastros</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Pessoas</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Veículos</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Equipamento</div>\n  </div>\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Relatórios</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Histórico</div>\n  </div>\n</div>\n"
+            "templateData": "<glok-botao class=\"botao\" (clicou)=\"aberto=!aberto\">☰</glok-botao>\n<div class=\"menu\">\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Cadastros</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Pessoas</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Veículos</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Equipamento</div>\n  </div>\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Relatórios</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Histórico</div>\n  </div>\n</div>\n"
         }
     ],
     "modules": [
@@ -401,7 +465,7 @@
                 "linktype": "component",
                 "name": "GlokBotaoComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {

@@ -1,13 +1,11 @@
-<glok-botao class="botao" (clicou)="aberto=!aberto">☰</glok-botao>
+<glok-botao class="botao">☰</glok-botao>
 <div class="menu">
-  <div class="agrupador">
-    <div class="menu-agrupador">Cadastros</div>
-    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Pessoas</div>
-    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Veículos</div>
-    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Equipamento</div>
-  </div>
-  <div class="agrupador">
-    <div class="menu-agrupador">Relatórios</div>
-    <div class="menu-item" (click)="acaoMenuItemClicou($event)">Histórico</div>
+  <div class="agrupador" *ngFor="let item of menu">
+    <div class="menu-agrupador">{{item.titulo}}</div>
+    <a class="menu-item"
+    
+    (click)="acaoClick()"
+    *ngFor="let sub of item.itens" [routerLink]="sub.rota"
+      [routerLinkActive]="'ativa'">{{sub.titulo}}</a>
   </div>
 </div>

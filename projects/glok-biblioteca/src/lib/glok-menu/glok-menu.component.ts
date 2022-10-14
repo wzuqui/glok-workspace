@@ -1,29 +1,24 @@
-import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, Input } from '@angular/core';
+
+type Menu = {
+  titulo: string;
+  rota?: string;
+  itens?: Menu[];
+};
 
 @Component({
   selector: 'lib-glok-menu',
   templateUrl: './glok-menu.component.html',
   styleUrls: ['./glok-menu.component.scss']
 })
-export class GlokMenuComponent implements OnInit {
+export class GlokMenuComponent {
+  @Input()
+  public menu: Menu[] = [];
+
   @HostBinding('tabindex')
   public tabindex = 0;
 
-  @HostBinding("class.aberto")
-  public aberto = false;
-
-  constructor() { }
-
-  public ngOnInit(): void {
-  }
-
-  @HostListener("blur", ["$event"])
-  public acaoObscurecer(evento: Event) {
-    this.aberto = false;
-  }
-
-  public acaoMenuItemClicou(evento: Event) {
-    this.aberto = false;
-    console.log(evento.currentTarget);
+  public acaoClick() {
+    (document.querySelector('[tabindex]') as HTMLElement).focus();
   }
 }
