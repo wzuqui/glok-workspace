@@ -1,0 +1,17 @@
+<div tabindex="0" class="container" *ngIf="paineis.length">
+  <h1>{{ tituloLista }}</h1>
+  <div class="lista-cards">
+    <div class="fundo-card" *ngFor="let painel of paineis; let indice = index">
+      <div title="{{ painel.descricao }}">
+        <div class="conteudo-card">
+          <div class="icone-card">
+            <i class="{{ painel.icone }}"></i>
+          </div>
+          <div class="titulo-card fonte-corpo">
+            {{ painel.titulo }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<!-- <div *ngFor="let aba of items; let indice = index">
+  <glok-aba
+    [ativa]="aba.ativa"
+    [botaoFechar]="aba.botaoFechar"
+    [fixada]="aba.fixada"
+    [icone]="aba.icone"
+    [rota]="aba.rota"
+    [titulo]="aba.titulo"
+  ></glok-aba>
+</div> -->
+<a
+  *ngFor="let aba of itens"
+  class="aba {{ aba.fixada }}"
+  routerLinkActive="ativa"
+  [routerLink]="aba.rota"
+>
+  <div class="icone-texto">
+    <i class="{{ aba.icone }}"></i>
+    <div class=".texto-subtitulo">{{ aba.titulo }}</div>
+  </div>
+  <i
+    *ngIf="aba.botaoFechar"
+    class="glok-icone-sair-1"
+    [routerLink]="[aba.rota, 'fechar']"
+  ></i>
+</a>

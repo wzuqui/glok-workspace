@@ -1,0 +1,193 @@
+{
+  "items": [
+    {
+      "key": "$base-text-color",
+      "value": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "key": "$base-accent",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$base-bg",
+      "value": "rgba(51, 51, 51, 1)"
+    },
+    {
+      "key": "$base-border-radius",
+      "value": "10px"
+    },
+    {
+      "key": "$base-success",
+      "value": "rgba(41, 183, 16, 1)"
+    },
+    {
+      "key": "$base-warning",
+      "value": "rgba(195, 151, 29, 1)"
+    },
+    {
+      "key": "$base-danger",
+      "value": "rgba(237, 120, 120, 1)"
+    },
+    {
+      "key": "$dropdowneditor-button-hover-bg",
+      "value": "rgba(71, 117, 255, 0.3)"
+    },
+    {
+      "key": "$texteditor-placeholder-color",
+      "value": "rgba(129, 129, 129, 1)"
+    },
+    {
+      "key": "$dropdowneditor-button-active-bg",
+      "value": "rgba(71, 117, 255, 0.5)"
+    },
+    {
+      "key": "$texteditor-filled-bg",
+      "value": "rgba(74, 74, 74, 1)"
+    },
+    {
+      "key": "$base-border-radius-small",
+      "value": "10px"
+    },
+    {
+      "key": "$dropdowneditor-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$textbox-search-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$dropdowneditor-icon-active-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$checkbox-hover-border-color",
+      "value": "rgba(48, 99, 252, 1)"
+    },
+    {
+      "key": "$checkbox-active-icon-bg",
+      "value": "rgba(0, 0, 0, 0.04)"
+    },
+    {
+      "key": "$calendar-cell-active-bg",
+      "value": "rgba(71, 117, 255, 0.29)"
+    },
+    {
+      "key": "$numberbox-spin-active-bg",
+      "value": "rgba(71, 117, 255, 0.3)"
+    },
+    {
+      "key": "$base-invalid-color",
+      "value": "rgba(237, 120, 120, 1)"
+    },
+    {
+      "key": "$base-invalid-faded-border-color",
+      "value": "rgba(237, 120, 120, 1)"
+    },
+    {
+      "key": "$tagbox-tag-bg",
+      "value": "rgba(129, 129, 129, 1)"
+    },
+    {
+      "key": "$button-group-success-selected-color",
+      "value": "rgba(22, 62, 15, 1)"
+    },
+    {
+      "key": "$pivotgrid-spin-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$datagrid-columnchooser-font-weight",
+      "value": "bold"
+    },
+    {
+      "key": "$datagrid-row-focused-bg",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$datagrid-selection-bg",
+      "value": "rgba(71, 117, 255, 0.49)"
+    },
+    {
+      "key": "$datagrid-row-selected-color",
+      "value": "rgba(255, 255, 255, 1)"
+    },
+    {
+      "key": "$datagrid-row-selected-border-color",
+      "value": "rgba(221, 221, 221, 0)"
+    },
+    {
+      "key": "$datagrid-link-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$datagrid-spin-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$datagrid-row-alternation-bg",
+      "value": "rgba(51, 51, 51, 1)"
+    },
+    {
+      "key": "$datagrid-border-color",
+      "value": "rgba(221, 221, 221, 1)"
+    },
+    {
+      "key": "$datagrid-hover-bg",
+      "value": "rgba(71, 70, 70, 1)"
+    },
+    {
+      "key": "$form-field-item-color",
+      "value": "rgba(129, 129, 129, 1)"
+    },
+    {
+      "key": "$base-border-radius-large",
+      "value": "10px"
+    },
+    {
+      "key": "$menu-popup-border-color",
+      "value": "rgba(221, 221, 221, 0)"
+    },
+    {
+      "key": "$loadindicator-bg",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$treeview-spin-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$treeview-hover-bg",
+      "value": "rgba(71, 70, 70, 1)"
+    },
+    {
+      "key": "$menu-item-hover-bg",
+      "value": "rgba(71, 70, 70, 1)"
+    },
+    {
+      "key": "$filterbuilder-menu-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$datagrid-menu-icon-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$gallery-nav-arrow-color",
+      "value": "rgba(71, 117, 255, 1)"
+    },
+    {
+      "key": "$scrollable-scroll-bg",
+      "value": "rgba(221, 221, 221, 1)"
+    },
+    {
+      "key": "$pager-page-selected-bg",
+      "value": "rgba(112, 148, 255, 1)"
+    }
+  ],
+  "assetsBasePath": "../../../../../../node_modules/devextreme/dist/css/",
+  "base": true,
+  "baseTheme": "generic.dark",
+  "makeSwatch": true,
+  "outputColorScheme": "safe-escuro"
+}

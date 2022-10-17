@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",
-    "storybook": "yarn docs:json && start-storybook -p 6006",
+    "storybook": "yarn docs:json && ng run glok-biblioteca:storybook --port 6006",
     "build-storybook": "yarn docs:json && build-storybook"
   },
   "private": true,
@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "devextreme": "^22.1.5",
+    "devextreme-angular": "^22.1.5",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -41,6 +43,8 @@
     "@storybook/testing-library": "^0.0.13",
     "@types/jasmine": "~4.0.0",
     "babel-loader": "^8.2.5",
+    "devextreme-cli": "^1.4.2",
+    "devextreme-themebuilder": "^22.1.5",
     "jasmine-core": "~4.1.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

@@ -1,11 +1,43 @@
-<glok-botao class="botao">☰</glok-botao>
-<div class="menu">
-  <div class="agrupador" *ngFor="let item of menu">
-    <div class="menu-agrupador">{{item.titulo}}</div>
-    <a class="menu-item"
-    
-    (click)="acaoClick()"
-    *ngFor="let sub of item.itens" [routerLink]="sub.rota"
-      [routerLinkActive]="'ativa'">{{sub.titulo}}</a>
+<div class="botao-menu">
+  <glok-botao [icone]="iconeMenu" (clicou)="alterarEstadoMenu()"></glok-botao>
+</div>
+
+<div class="lista-itens" *ngIf="aberto">
+  <div *ngFor="let agrupador of menu" class="agrupador-doca">
+    <div class="agrupador" (click)="agrupador.aberto = !agrupador.aberto">
+      <div class="agrupador-titulo fonte-menu">
+        {{ agrupador.titulo }}
+      </div>
+      <i class="glok-icone-expandir-para-baixo" *ngIf="!agrupador.aberto"></i>
+      <i class="glok-icone-expandir-para-cima" *ngIf="agrupador.aberto"></i>
+    </div>
+
+    <ng-template
+      *ngFor="let itemMenu of agrupador.GlokMenuItens"
+      [ngIf]="agrupador.aberto"
+    >
+      <a
+        (click)="abrirNovaJanela()"
+        [routerLink]="itemMenu.rota"
+        [routerLinkActive]="'ativa'"
+        class="item-menu"
+      >
+        <div class="linha1">
+          <div class="icone-texto">
+            <i class="{{ itemMenu.icone }}"></i>
+            <div class="fonte-corpo">
+              {{ itemMenu.titulo }}
+            </div>
+          </div>
+          <glok-botao
+            [icone]="'glok-icone-favorito'"
+            class="favorito"
+          ></glok-botao>
+        </div>
+        <div class="fonte-legenda" [title]="itemMenu.descricao">
+          {{ itemMenu.descricao }}
+        </div>
+      </a>
+    </ng-template>
   </div>
 </div>

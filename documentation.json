@@ -1,15 +1,280 @@
 {
     "pipes": [],
     "interfaces": [],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "GlokAbasService",
+            "id": "injectable-GlokAbasService-58388f861c4a0509db1167f9832eea8015119b22023cc70cc6a50f3c5a4deb3393cd2ab6ab654c8ffdd10bbd9ab7b5e9d6a8214caf1c48b2c33b900b711c72b2",
+            "file": "projects/glok-biblioteca/src/lib/glok-abas/glok-abas.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "assinar",
+                    "args": [
+                        {
+                            "name": "abas",
+                            "type": "GlokAba[]",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "obterPorRota",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "rota",
+                                    "type": "string",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "abas",
+                            "type": "GlokAba[]",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "obterPorRota",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "rota",
+                                    "type": "string",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { NavigationEnd, Router } from '@angular/router';\r\nimport { GlokAba } from './glok-aba.type';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class GlokAbasService {\r\n  constructor(private _router: Router) {}\r\n\r\n  public assinar(\r\n    abas: GlokAba[],\r\n    obterPorRota: (rota: string) => GlokAba\r\n  ): void {\r\n    console.log('ta ouvindo');\r\n\r\n    let ativo = '';\r\n    this._router.events.subscribe((evento) => {\r\n      if (evento instanceof NavigationEnd) {\r\n        const [_, rota] = evento.url.split('/');\r\n        const item = obterPorRota(rota);\r\n        const ehFechar = evento.url.includes('fechar');\r\n        if (rota === '') {\r\n          return;\r\n        }\r\n        if (!ehFechar) {\r\n          ativo = evento.url;\r\n        }\r\n        if (item) {\r\n          const jaExiste = abas.find((p) => p.rota === item.rota);\r\n          if (jaExiste) {\r\n            const ehFechar = evento.url.includes('fechar');\r\n            if (ehFechar) {\r\n              try {\r\n                const indice = abas.indexOf(jaExiste);\r\n                abas.splice(indice, 1);\r\n\r\n                if (evento.url.includes(ativo)) {\r\n                  const proximo = abas[indice];\r\n                  if (proximo) {\r\n                    this._router.navigate([proximo.rota]);\r\n                  }\r\n                } else {\r\n                  this._router.navigate([ativo]);\r\n                }\r\n              } catch {\r\n                const ultimo = abas[abas.length];\r\n                if (ultimo) {\r\n                  this._router.navigate([ultimo.rota]);\r\n                }\r\n              }\r\n            }\r\n            return;\r\n          }\r\n          abas.push({ ...item, fixada: false });\r\n        }\r\n      }\r\n    });\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "_router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "_router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "GlokTemaService",
+            "id": "injectable-GlokTemaService-dc2940e89f6951fae1a60b0a788fc37cd85d99a58b610dcfbd6162a5c6b519364a865bb007b0f203bb3b7e421c8e83a02e54a1f214b981f09d5a4fbacafb1f90",
+            "file": "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.service.ts",
+            "properties": [],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class GlokTemaService {\r\n  constructor() {}\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 6
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "MenuService",
+            "id": "injectable-MenuService-621ba854c87b94182ebec79ec498c75dc9f24301feca74b22f90edf98d9ca11c19c7c17e396f9ea9a53f3d7ba8b416132fcef29457ae0a9d3e4f85604265b86d",
+            "file": "projects/glok-biblioteca/src/lib/glok-menu/menu.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "listar",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "GlokMenu[]",
+                    "typeParameters": [],
+                    "line": 8,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "obterPorRota",
+                    "args": [
+                        {
+                            "name": "rota",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "GlokMenu",
+                    "typeParameters": [],
+                    "line": 50,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rota",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { GlokMenu } from './glok-menu.type';\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class MenuService {\r\n  public listar(): GlokMenu[] {\r\n    const retorno = [\r\n      {\r\n        aberto: true,\r\n        titulo: 'Cadastros',\r\n        GlokMenuItens: [\r\n          {\r\n            icone: 'glok-icone-clientes',\r\n            titulo: 'Clientes',\r\n            descricao: 'Cadastro de clientes',\r\n            rota: 'clientes',\r\n          },\r\n          {\r\n            icone: 'glok-icone-produtos',\r\n            titulo: 'Produtos',\r\n            descricao: 'Cadastro de produtos',\r\n            rota: 'produtos',\r\n          },\r\n          {\r\n            icone: 'glok-icone-serviços',\r\n            titulo: 'Serviços',\r\n            descricao: 'Cadastro de serviços',\r\n            rota: 'servicos',\r\n          },\r\n        ],\r\n      },\r\n      {\r\n        aberto: true,\r\n        titulo: 'Configurações',\r\n        GlokMenuItens: [\r\n          {\r\n            icone: 'glok-icone-circulo',\r\n            titulo: 'Configurações',\r\n            descricao: 'Configurações gerais do sistema que não vai caber',\r\n            rota: 'configurações',\r\n          },\r\n        ],\r\n      },\r\n    ];\r\n    return retorno;\r\n  }\r\n\r\n  public obterPorRota(rota: string): GlokMenu {\r\n    const retorno = this.listar().find((p) =>\r\n      p.GlokMenuItens.find((p) => p.rota === rota)\r\n    ) as GlokMenu;\r\n    return retorno;\r\n  }\r\n  constructor() {}\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 55
+            },
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [],
     "directives": [],
     "components": [
         {
+            "name": "GlokAbasComponent",
+            "id": "component-GlokAbasComponent-ab5c2482fcd5e819d4c4a096bbc1c16a48091863289a40e089c71548f70b6f496ab7bf8954bf3d606ed6348f4182cdc85424b5cce25c1103edc47c0f1348d337",
+            "file": "projects/glok-biblioteca/src/lib/glok-abas/glok-abas.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-abas",
+            "styleUrls": [
+                "./glok-abas.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-abas.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "itens",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "GlokAba[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\n\r\nimport { GlokAba } from './glok-aba.type';\r\n\r\n@Component({\r\n  selector: 'glok-abas',\r\n  templateUrl: './glok-abas.component.html',\r\n  styleUrls: ['./glok-abas.component.scss'],\r\n})\r\nexport class GlokAbasComponent implements OnInit {\r\n  // @Input() public items: GlokAba[] = [];\r\n\r\n  @Input()\r\n  public itens: GlokAba[] = [];\r\n\r\n  constructor() {}\r\n\r\n  public ngOnInit(): void {}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n  align-items: flex-start;\r\n  align-self: flex-start;\r\n  border-color: var(--primario);\r\n  display: flex;\r\n  flex-direction: row;\r\n  height: 48px;\r\n  margin-bottom: -1px;\r\n  max-width: 1590px;\r\n\r\n  .aba {\r\n    align-items: center;\r\n    border-radius: 10px 10px 0px 0px;\r\n    border-style: solid;\r\n    border: 0.5px solid var(--primario);\r\n    cursor: pointer;\r\n    display: flex;\r\n    flex-direction: row;\r\n    height: 40px;\r\n    margin-bottom: -1px;\r\n    margin-top: 8px;\r\n    min-width: 52px;\r\n    text-decoration: none;\r\n    width: 162px;\r\n\r\n    &:hover:not(.ativa) {\r\n      background-color: var(--hover);\r\n    }\r\n\r\n    &.ativa {\r\n      background-color: var(--fundo);\r\n      border-bottom: 1px solid var(--fundo);\r\n      width: 162px;\r\n    }\r\n\r\n    .icone-texto {\r\n      align-items: center;\r\n      color: var(--primario);\r\n      display: flex;\r\n      height: 24px;\r\n      text-decoration: none;\r\n      width: max-content;\r\n\r\n      i {\r\n        font-size: 24px;\r\n      }\r\n\r\n      .texto-subtitulo {\r\n        overflow: hidden;\r\n        text-overflow: ellipsis;\r\n        white-space: nowrap;\r\n      }\r\n    }\r\n\r\n    .glok-icone-sair-1 {\r\n      color: var(--primario);\r\n      cursor: pointer;\r\n      font-size: 14px;\r\n      margin-right: 10px;\r\n      text-decoration: none;\r\n    }\r\n\r\n    &:not(.true) {\r\n      >.icone-texto {\r\n        display: flex;\r\n        flex-direction: row;\r\n        height: 48px;\r\n        justify-content: flex-start;\r\n        margin-left: 8px;\r\n        width: 130px;\r\n\r\n      }\r\n    }\r\n\r\n    &.true {\r\n      justify-content: center;\r\n      width: 52px;\r\n\r\n      >.icone-texto {\r\n        height: 48px;\r\n        justify-content: center;\r\n        width: 52px;\r\n      }\r\n    }\r\n  }\r\n\r\n}\r\n",
+                    "styleUrl": "./glok-abas.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 14
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<!-- <div *ngFor=\"let aba of items; let indice = index\">\r\n  <glok-aba\r\n    [ativa]=\"aba.ativa\"\r\n    [botaoFechar]=\"aba.botaoFechar\"\r\n    [fixada]=\"aba.fixada\"\r\n    [icone]=\"aba.icone\"\r\n    [rota]=\"aba.rota\"\r\n    [titulo]=\"aba.titulo\"\r\n  ></glok-aba>\r\n</div> -->\r\n<a\r\n  *ngFor=\"let aba of itens\"\r\n  class=\"aba {{ aba.fixada }}\"\r\n  routerLinkActive=\"ativa\"\r\n  [routerLink]=\"aba.rota\"\r\n>\r\n  <div class=\"icone-texto\">\r\n    <i class=\"{{ aba.icone }}\"></i>\r\n    <div class=\".texto-subtitulo\">{{ aba.titulo }}</div>\r\n  </div>\r\n  <i\r\n    *ngIf=\"aba.botaoFechar\"\r\n    class=\"glok-icone-sair-1\"\r\n    [routerLink]=\"[aba.rota, 'fechar']\"\r\n  ></i>\r\n</a>\r\n"
+        },
+        {
             "name": "GlokBotaoComponent",
-            "id": "component-GlokBotaoComponent-c0260ec4a4dad1291afeca0cd614f62b0bc688a8c28a49c0d07c0be29775e1b21465a05dc95cb5019dd0e4ceac14996e264973da95c2806bdc13b76c2ec68ebf",
+            "id": "component-GlokBotaoComponent-a5aed9872af3a69955eac1dbbcc974c821bdfe62c169f597fc3e5580895608c2f44b3c378720d47209cb15c36431c5f3ff7d7a9baa334da48d012b318fbf0cba",
             "file": "projects/glok-biblioteca/src/lib/glok-botao/glok-botao.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -27,11 +292,20 @@
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "icone",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "texto",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 9,
+                    "line": 17,
                     "type": "string",
                     "decorators": []
                 }
@@ -42,7 +316,7 @@
                     "defaultValue": "new EventEmitter<Event>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 18,
                     "type": "EventEmitter"
                 }
             ],
@@ -61,7 +335,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -91,9 +365,12 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 14,
+                    "line": 20,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
                 }
             ],
             "deprecated": false,
@@ -115,18 +392,236 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 18
+                    "line": 23
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'glok-botao',\n  templateUrl: './glok-botao.component.html',\n  styleUrls: ['./glok-botao.component.scss']\n})\nexport class GlokBotaoComponent implements OnInit {\n  @Input() public texto: string = '';\n  @Output() public clicou = new EventEmitter<Event>();\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  @HostListener('click', ['$event'])\n  public acaoClicou(evento: Event) {\n    this.clicou.emit(evento);\n  }\n\n\n}\n",
+            "sourceCode": "import {\r\n  Component,\r\n  EventEmitter,\r\n  HostListener,\r\n  Input,\r\n  OnInit,\r\n  Output,\r\n} from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'glok-botao',\r\n  templateUrl: './glok-botao.component.html',\r\n  styleUrls: ['./glok-botao.component.scss'],\r\n})\r\nexport class GlokBotaoComponent implements OnInit {\r\n  @Input() public icone = '';\r\n  @Input() public texto = '';\r\n  @Output() public clicou = new EventEmitter<Event>();\r\n\r\n  public ngOnInit(): void {}\r\n\r\n  @HostListener('click', ['$event'])\r\n  public acaoClicou(evento: Event) {\r\n    this.clicou.emit(evento);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  --border-color: #d8d8d8;\n  --background-color: #f3f3f3;\n  --background-color-lighter: #ffffff;\n  --background-color-darker: #dbdbdb;\n\n  background-color: var(--background-color);\n  border: 1px solid var(--border-color);\n  cursor: pointer;\n  display: inline-block;\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\n  font-size: 18px;\n  padding: 5px 10px;\n  user-select: none;\n  border-radius: 3px;\n  transition: background-color 300ms linear;\n\n  &:hover{\n    background-color: var(--background-color-lighter);\n  }\n  &:active {\n    background-color: var(--background-color-darker);\n  }\n}\n",
+                    "data": ":host {\r\n  align-items: center;\r\n  color: var(--primario);\r\n  cursor: pointer;\r\n  display: flex;\r\n  justify-content: center;\r\n  user-select: none;\r\n\r\n  .fonte-subtitulo {\r\n    max-height: 24px;\r\n    max-width: 106px;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n  }\r\n}\r\n",
                     "styleUrl": "./glok-botao.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<i [class]=\"icone\"></i>\r\n<div>{{ texto }}</div>\r\n<ng-content></ng-content>\r\n"
+        },
+        {
+            "name": "GlokCabecalhoComponent",
+            "id": "component-GlokCabecalhoComponent-dcc206181117506f20f29dafae1a121e9155e2ec32a1e8505312fa9b86f2a48d3a9adc8a967d86fdf8e6013ab8931e3d660e4589cd5336f26b8087a00ba8364a",
+            "file": "projects/glok-biblioteca/src/lib/glok-cabecalho/glok-cabecalho.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-cabecalho",
+            "styleUrls": [
+                "./glok-cabecalho.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-cabecalho.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "abas",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "GlokAba[]",
+                    "decorators": []
+                },
+                {
+                    "name": "emailUsuario",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "imagemUsuario",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "logoCabecalho",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "menu",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "GlokMenu[]",
+                    "decorators": []
+                },
+                {
+                    "name": "nomeEmpresa",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "nomeUsuario",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "clicouLogo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { GlokAba } from '../glok-abas/glok-aba.type';\r\nimport { GlokMenu } from '../glok-menu/glok-menu.type';\r\n\r\n@Component({\r\n  selector: 'glok-cabecalho',\r\n  templateUrl: './glok-cabecalho.component.html',\r\n  styleUrls: ['./glok-cabecalho.component.scss'],\r\n})\r\nexport class GlokCabecalhoComponent implements OnInit {\r\n  @Input() public abas: GlokAba[] = [];\r\n  @Input() public emailUsuario = '';\r\n  @Input() public imagemUsuario = '';\r\n  @Input() public logoCabecalho = '';\r\n  @Input() public menu: GlokMenu[] = [];\r\n  @Input() public nomeEmpresa = '';\r\n  @Input() public nomeUsuario = '';\r\n\r\n  constructor() {}\r\n\r\n  public clicouLogo(): void {}\r\n\r\n  public ngOnInit(): void {}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n\r\n  background-color: var(--fundo-barra);\r\n  border-bottom: 1px solid;\r\n  border-color: var(--primario);\r\n  display: flex;\r\n  flex-direction: row;\r\n  height: 48px;\r\n  width: 1920px;\r\n  user-select: none;\r\n\r\n  .menu {\r\n    width: 92px;\r\n    z-index: 1;\r\n  }\r\n\r\n  .logo {\r\n    height: 30px;\r\n    margin-top: 9px;\r\n    width: 60px;\r\n  }\r\n\r\n  .abas {\r\n    margin-left: 40px;\r\n    width: auto;\r\n  }\r\n\r\n  .perfil {\r\n    justify-content: flex-end;\r\n    margin-left: auto;\r\n    margin-right: 24px;\r\n    max-width: 100px;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./glok-cabecalho.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 17
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"menu\">\r\n  <glok-menu [menu]=\"menu\"></glok-menu>\r\n</div>\r\n\r\n<div class=\"logo\">\r\n  <img src=\"{{ logoCabecalho }}\" height=\"30\" width=\"60\" alt=\"Logotipo\" />\r\n</div>\r\n\r\n<div class=\"abas\">\r\n  <glok-abas [itens]=\"abas\"> </glok-abas>\r\n</div>\r\n\r\n<div class=\"perfil\">\r\n  <glok-perfil\r\n    [emailUsuario]=\"emailUsuario\"\r\n    [imagemUsuario]=\"imagemUsuario\"\r\n    [nomeUsuario]=\"nomeUsuario\"\r\n    [unidade]=\"nomeEmpresa\"\r\n  ></glok-perfil>\r\n</div>\r\n"
+        },
+        {
+            "name": "GlokListaPaineisAtalhoComponent",
+            "id": "component-GlokListaPaineisAtalhoComponent-910abae95e69594399717ed255565b3b5ac44a65ea438ed81e6f2f450ec20ef5aafe1067e7094bcaca6d359d2147c52b9f72b7af6dc711ea8e17212512a4c9f3",
+            "file": "projects/glok-biblioteca/src/lib/glok-lista-paineis-atalho/glok-lista-paineis-atalho.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-lista-paineis-atalho",
+            "styleUrls": [
+                "./glok-lista-paineis-atalho.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-lista-paineis-atalho.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "paineis",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "GlokPainel[]",
+                    "decorators": []
+                },
+                {
+                    "name": "tituloLista",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport { GlokPainel } from './glok-painel.type';\r\n@Component({\r\n  selector: 'glok-lista-paineis-atalho',\r\n  templateUrl: './glok-lista-paineis-atalho.component.html',\r\n  styleUrls: ['./glok-lista-paineis-atalho.component.scss'],\r\n})\r\nexport class GlokListaPaineisAtalhoComponent implements OnInit {\r\n  @Input() public paineis: GlokPainel[] = [];\r\n  @Input() public tituloLista = '';\r\n\r\n  constructor() {}\r\n\r\n  public ngOnInit(): void {}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\r\n  .lista-cards {\r\n    display: flex;\r\n    flex-direction: row;\r\n  }\r\n  .fundo-card {\r\n    border-radius: 4px;\r\n    background: var(--fundo-barra);\r\n    box-shadow: 0px 1.6px 3.6px rgb(0 0 0 / 13%),\r\n      0px 0.3px 0.9px rgb(0 0 0 / 10%);\r\n    cursor: pointer;\r\n    margin-top: 8px;\r\n    margin-right: 30px;\r\n    width: 170px;\r\n    height: 90px;\r\n  }\r\n  .fundo-card:hover {\r\n    background-color: var(--hover);\r\n    opacity: 1;\r\n    transition: background-color 0.2s ease-out 50ms;\r\n  }\r\n  a {\r\n    text-decoration: none;\r\n    color: var(--texto-principal);\r\n  }\r\n  .titulo-card {\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    margin-bottom: 16px;\r\n    margin-left: 14px;\r\n    margin-right: 14px;\r\n    margin-top: 6px;\r\n    text-align: center;\r\n  }\r\n  .icone-card {\r\n    color: var(--primario);\r\n    font-size: 40px;\r\n    padding-left: 60px;\r\n    padding-right: 60px;\r\n    padding-top: 10px;\r\n  }\r\n}\r\n.container {\r\n  margin-top: 76px;\r\n}\r\n.container h1 {\r\n  margin-bottom: 8px;\r\n}\r\n",
+                    "styleUrl": "./glok-lista-paineis-atalho.component.scss"
                 }
             ],
             "stylesData": "",
@@ -141,18 +636,18 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ng-content></ng-content>\n{{ texto }}\n"
+            "templateData": "<div tabindex=\"0\" class=\"container\" *ngIf=\"paineis.length\">\r\n  <h1>{{ tituloLista }}</h1>\r\n  <div class=\"lista-cards\">\r\n    <div class=\"fundo-card\" *ngFor=\"let painel of paineis; let indice = index\">\r\n      <div title=\"{{ painel.descricao }}\">\r\n        <div class=\"conteudo-card\">\r\n          <div class=\"icone-card\">\r\n            <i class=\"{{ painel.icone }}\"></i>\r\n          </div>\r\n          <div class=\"titulo-card fonte-corpo\">\r\n            {{ painel.titulo }}\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
         },
         {
             "name": "GlokMenuComponent",
-            "id": "component-GlokMenuComponent-3d919cdeee69d5d09773199b8dc42c5df9f0b5d5ad40ab8e1dffd981bd27aa2bf592d4b21c42983e9f3608bde16eea92ff8dfe0c4d56f542787c3f4882efcef9",
+            "id": "component-GlokMenuComponent-6248d594922d6b5f69cfd7e99b465a6bf52d5b08b515c4d393e733fdbda418083ef69fceb25b94b3c55c964fae13c835115ba77228999ef1e86b2604da6e955f",
             "file": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "lib-glok-menu",
+            "selector": "glok-menu",
             "styleUrls": [
                 "./glok-menu.component.scss"
             ],
@@ -161,7 +656,17 @@
                 "./glok-menu.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "menu",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "GlokMenu[]",
+                    "decorators": []
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [
                 {
@@ -172,7 +677,7 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 13,
+                    "line": 20,
                     "decorators": [
                         {
                             "name": "HostBinding",
@@ -184,20 +689,14 @@
                     ]
                 },
                 {
-                    "name": "tabindex",
-                    "defaultValue": "0",
+                    "name": "iconeMenu",
+                    "defaultValue": "'glok-icone-menu'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "number",
+                    "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 10,
-                    "decorators": [
-                        {
-                            "name": "HostBinding",
-                            "stringifiedArguments": "'tabindex'"
-                        }
-                    ],
+                    "line": 12,
                     "modifierKind": [
                         123
                     ]
@@ -205,50 +704,25 @@
             ],
             "methodsClass": [
                 {
-                    "name": "acaoMenuItemClicou",
-                    "args": [
-                        {
-                            "name": "evento",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "name": "abrirNovaJanela",
+                    "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "modifierKind": [
                         123
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "evento",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
                     ]
                 },
                 {
                     "name": "acaoObscurecer",
-                    "args": [
-                        {
-                            "name": "evento",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -259,28 +733,36 @@
                     ],
                     "modifierKind": [
                         123
-                    ],
-                    "jsdoctags": [
-                        {
-                            "name": "evento",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
                     ]
                 },
                 {
-                    "name": "ngOnInit",
+                    "name": "alterarEstadoMenu",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "tabIndexado",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'tabindex', ['$event']"
+                        }
+                    ],
                     "modifierKind": [
                         123
                     ]
@@ -294,47 +776,41 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 20,
                     "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "tabindex",
-                    "defaultValue": "0",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 10,
-                    "type": "number",
                     "decorators": []
                 }
             ],
             "hostListeners": [
                 {
                     "name": "blur",
-                    "args": [
-                        {
-                            "name": "evento",
-                            "type": "Event",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
+                    "args": [],
                     "argsDecorator": [
                         "$event"
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21
+                    "line": 23
+                },
+                {
+                    "name": "tabindex",
+                    "args": [],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, HostBinding, HostListener, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'lib-glok-menu',\n  templateUrl: './glok-menu.component.html',\n  styleUrls: ['./glok-menu.component.scss']\n})\nexport class GlokMenuComponent implements OnInit {\n  @HostBinding('tabindex')\n  public tabindex = 0;\n\n  @HostBinding(\"class.aberto\")\n  public aberto = false;\n\n  constructor() { }\n\n  public ngOnInit(): void {\n  }\n\n  @HostListener(\"blur\", [\"$event\"])\n  public acaoObscurecer(evento: Event) {\n    this.aberto = false;\n  }\n\n  public acaoMenuItemClicou(evento: Event) {\n    this.aberto = false;\n    console.log(evento.currentTarget);\n  }\n}\n",
+            "sourceCode": "import { Component, HostBinding, HostListener, Input } from '@angular/core';\r\n\r\nimport { GlokMenu } from './glok-menu.type';\r\n\r\n@Component({\r\n  selector: 'glok-menu',\r\n  templateUrl: './glok-menu.component.html',\r\n  styleUrls: ['./glok-menu.component.scss'],\r\n})\r\nexport class GlokMenuComponent {\r\n  @Input() public menu: GlokMenu[] = [];\r\n  public iconeMenu = 'glok-icone-menu';\r\n\r\n  @HostListener('tabindex', ['$event'])\r\n  public tabIndexado() {\r\n    this.aberto = false;\r\n  }\r\n\r\n  @HostBinding('class.aberto')\r\n  public aberto = false;\r\n\r\n  @HostListener('blur', ['$event'])\r\n  public acaoObscurecer() {\r\n    this.aberto = false;\r\n    this.iconeMenu = 'glok-icone-menu';\r\n  }\r\n\r\n  constructor() {}\r\n\r\n  public abrirNovaJanela(): void {\r\n    this.iconeMenu = 'glok-icone-menu';\r\n    this.aberto = false;\r\n  }\r\n\r\n  public alterarEstadoMenu() {\r\n    if (this.iconeMenu === 'glok-icone-menu') {\r\n      this.iconeMenu = 'glok-icone-fechar-menu';\r\n      this.aberto = true;\r\n      return;\r\n    }\r\n\r\n    if (this.iconeMenu === 'glok-icone-fechar-menu') {\r\n      this.iconeMenu = 'glok-icone-menu';\r\n      this.aberto = false;\r\n      return;\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: block;\n  font-family: Verdana, Geneva, Tahoma, sans-serif;\n  font-size: 14px;\n  position: relative;\n  user-select: none;\n\n  .botao {\n    background-color: purple;\n    color: #FFF;\n  }\n\n  .menu {\n    background-color: aliceblue;\n    display: none;\n    left: 0;\n    position: absolute;\n    top: 34px;\n\n    .agrupador {\n      display: flex;\n      flex-direction: column;\n\n      > div {\n        padding: 10px;\n      }\n\n      .menu-agrupador {\n        background-color: rgb(159, 198, 233);\n\n        &::after {\n          content: '▼';\n          float: right;\n        }\n      }\n\n      .menu-item {\n        &:hover {\n          cursor: pointer;\n          background-color: rgba(129, 135, 141, 0.842);\n          text-decoration: underline;\n        }\n        &:active {\n          background-color: rgba(89, 105, 121, 0.842);\n        }\n      }\n    }\n  }\n\n\n  &:focus.aberto {\n    .botao {\n      background-color: rgb(83, 0, 83);\n    }\n    .menu {\n      display: unset;\n    }\n  }\n}\n",
+                    "data": ":host {\r\n  flex-direction: column;\r\n\r\n  .botao-menu {\r\n    align-self: center;\r\n    font-size: 28px;\r\n    margin-left: 24px;\r\n    margin-top: 8px;\r\n    position: absolute;\r\n    user-select: none;\r\n    width: 28px;\r\n  }\r\n\r\n  .lista-itens {\r\n    align-items: flex-start;\r\n    background-color: var(--fundo-barra);\r\n    display: flex;\r\n    flex-direction: column;\r\n    height: 100vh;\r\n    overflow-y: auto;\r\n    user-select: none;\r\n    width: 200px;\r\n\r\n    .agrupador-doca {\r\n\r\n      &:first-child {\r\n        margin-top: 49px;\r\n      }\r\n\r\n      .agrupador {\r\n        align-items: center;\r\n        background-color: var(--cinza3);\r\n        border-bottom: 1px var(--texto-secundario) solid;\r\n        cursor: pointer;\r\n        display: flex;\r\n        flex-direction: row;\r\n        justify-content: space-between;\r\n        min-height: 40px;\r\n        user-select: none;\r\n        width: 200px;\r\n\r\n        .agrupador-titulo.fonte-menu {\r\n          margin-left: 24px;\r\n          color: var(--texto-principal);\r\n        }\r\n\r\n        i {\r\n          color: var(--texto-principal);\r\n          margin-right: 10px;\r\n        }\r\n      }\r\n\r\n      .item-menu {\r\n        color: var(--texto-principal);\r\n        cursor: pointer;\r\n        display: flex;\r\n        flex-direction: column;\r\n        height: 40px;\r\n        justify-content: center;\r\n        text-decoration: none;\r\n        width: 200px;\r\n\r\n        &:hover {\r\n          background-color: var(--hover);\r\n        }\r\n\r\n        &:active {\r\n          background-color: var(--selecionado);\r\n        }\r\n\r\n        .linha1 {\r\n          align-items: flex-end;\r\n          display: flex;\r\n          flex-direction: row;\r\n          justify-content: space-between;\r\n          margin-left: 24px;\r\n\r\n          .icone-texto {\r\n            align-items: baseline;\r\n            display: flex;\r\n\r\n            i {\r\n              color: var(--primario);\r\n              font-size: 16px;\r\n            }\r\n          }\r\n\r\n          .favorito {\r\n            color: var(--primario);\r\n            font-size: 16px;\r\n            margin-right: 4px;\r\n          }\r\n        }\r\n\r\n        .fonte-legenda {\r\n          color: var(--texto-secundario);\r\n          display: block;\r\n          margin-left: 26px;\r\n          overflow: hidden;\r\n          text-overflow: ellipsis;\r\n          white-space: nowrap;\r\n          width: 156px;\r\n        }\r\n      }\r\n    }\r\n  }\r\n\r\n\r\n  // &:focus.ativo,\r\n  // &:focus-within {\r\n  //   .lista-itens {\r\n  //     display: flex;\r\n  //   }\r\n  //   .menu {\r\n  //     display: flex;\r\n  //   }\r\n  // }\r\n\r\n  // &:not(:focus-within).lista-itens {\r\n  //   display: none;\r\n  // }\r\n}\r\n",
                     "styleUrl": "./glok-menu.component.scss"
                 }
             ],
@@ -345,24 +821,641 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 13
+                "line": 26
+            },
+            "templateData": "<div class=\"botao-menu\">\r\n  <glok-botao [icone]=\"iconeMenu\" (clicou)=\"alterarEstadoMenu()\"></glok-botao>\r\n</div>\r\n\r\n<div class=\"lista-itens\" *ngIf=\"aberto\">\r\n  <div *ngFor=\"let agrupador of menu\" class=\"agrupador-doca\">\r\n    <div class=\"agrupador\" (click)=\"agrupador.aberto = !agrupador.aberto\">\r\n      <div class=\"agrupador-titulo fonte-menu\">\r\n        {{ agrupador.titulo }}\r\n      </div>\r\n      <i class=\"glok-icone-expandir-para-baixo\" *ngIf=\"!agrupador.aberto\"></i>\r\n      <i class=\"glok-icone-expandir-para-cima\" *ngIf=\"agrupador.aberto\"></i>\r\n    </div>\r\n\r\n    <ng-template\r\n      *ngFor=\"let itemMenu of agrupador.GlokMenuItens\"\r\n      [ngIf]=\"agrupador.aberto\"\r\n    >\r\n      <a\r\n        (click)=\"abrirNovaJanela()\"\r\n        [routerLink]=\"itemMenu.rota\"\r\n        [routerLinkActive]=\"'ativa'\"\r\n        class=\"item-menu\"\r\n      >\r\n        <div class=\"linha1\">\r\n          <div class=\"icone-texto\">\r\n            <i class=\"{{ itemMenu.icone }}\"></i>\r\n            <div class=\"fonte-corpo\">\r\n              {{ itemMenu.titulo }}\r\n            </div>\r\n          </div>\r\n          <glok-botao\r\n            [icone]=\"'glok-icone-favorito'\"\r\n            class=\"favorito\"\r\n          ></glok-botao>\r\n        </div>\r\n        <div class=\"fonte-legenda\" [title]=\"itemMenu.descricao\">\r\n          {{ itemMenu.descricao }}\r\n        </div>\r\n      </a>\r\n    </ng-template>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "GlokMenuPesquisaComponent",
+            "id": "component-GlokMenuPesquisaComponent-bf9b823da499b911abc5a0cb3eec1fe79379cf16a5fa6cab2e003e199e046c978a38847bb5259184ef7b3ceb281286812d658869a7ce78933e31b8108bc0a010",
+            "file": "projects/glok-biblioteca/src/lib/glok-menu-pesquisa/glok-menu-pesquisa.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-menu-pesquisa",
+            "styleUrls": [
+                "./glok-menu-pesquisa.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-menu-pesquisa.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "menu",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "GlokMenuItem[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "itensProcessados",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "GlokMenuItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "pesquisarPor",
+                    "defaultValue": "'titulo'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "pesquisaTempoSugestao",
+                    "defaultValue": "200",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "selectBoxDataSource",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DataSource",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "showDataBeforeSearchOption",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 19,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "resetarPesquisa",
+                    "args": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "e",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport DataSource from 'devextreme/data/data_source';\r\n\r\nimport { GlokAbasService } from '../glok-abas/glok-abas.service';\r\nimport { GlokMenuItem } from '../glok-menu/glok-menu-itens.type';\r\n\r\n@Component({\r\n  selector: 'glok-menu-pesquisa',\r\n  templateUrl: './glok-menu-pesquisa.component.html',\r\n  styleUrls: ['./glok-menu-pesquisa.component.scss'],\r\n})\r\nexport class GlokMenuPesquisaComponent implements OnInit {\r\n  @Input()\r\n  public menu: GlokMenuItem[] = [];\r\n  public itensProcessados: GlokMenuItem[] = [];\r\n  public selectBoxDataSource: DataSource;\r\n  public pesquisarPor: keyof GlokMenuItem = 'titulo';\r\n  public pesquisaTempoSugestao = 200;\r\n  public showDataBeforeSearchOption = false;\r\n\r\n  constructor(private abas: GlokAbasService) {\r\n    this.selectBoxDataSource = new DataSource({\r\n      store: this.itensProcessados,\r\n      group: 'categoria' as keyof GlokMenuItem,\r\n    });\r\n  }\r\n\r\n  public ngOnInit(): void {\r\n    let items = this.menu;\r\n\r\n    items.forEach((item) => {\r\n      item.items?.forEach((i) => {\r\n        this.itensProcessados.push({\r\n          categoria: item.categoria,\r\n          descricao: i.descricao,\r\n          icone: i.icone,\r\n          rota: i.rota,\r\n          titulo: i.titulo,\r\n        });\r\n      });\r\n    });\r\n  }\r\n\r\n  public resetarPesquisa(e: any): void {\r\n    e.component.reset();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n:host {\r\n  align-items: center;\r\n  display: flex;\r\n  justify-content: center;\r\n  margin: 0;\r\n}\r\n\r\n.borda-pesquisa {\r\n  align-items: center;\r\n  border-radius: 8px;\r\n  border: 1px solid var(--texto-secundario);\r\n  display: flex;\r\n  height: 52px;\r\n  margin-top: 20px;\r\n  padding-left: 10px;\r\n  width: 490px;\r\n}\r\n\r\n.icone {\r\n  color: var(--primario);\r\n  font-size: 24px;\r\n  margin-right: 6px;\r\n  float: left;\r\n  width: 8%;\r\n}\r\n",
+                    "styleUrl": "./glok-menu-pesquisa.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "abas",
+                        "type": "GlokAbasService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 19,
+                "jsdoctags": [
+                    {
+                        "name": "abas",
+                        "type": "GlokAbasService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<glok-botao class=\"botao\" (clicou)=\"aberto=!aberto\">☰</glok-botao>\n<div class=\"menu\">\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Cadastros</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Pessoas</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Veículos</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Equipamento</div>\n  </div>\n  <div class=\"agrupador\">\n    <div class=\"menu-agrupador\">Relatórios</div>\n    <div class=\"menu-item\" (click)=\"acaoMenuItemClicou($event)\">Histórico</div>\n  </div>\n</div>\n"
+            "templateData": "<dx-select-box\r\n  (onItemClick)=\"resetarPesquisa($event)\"\r\n  [dataSource]=\"selectBoxDataSource\"\r\n  [grouped]=\"true\"\r\n  [searchEnabled]=\"true\"\r\n  [searchExpr]=\"pesquisarPor\"\r\n  [searchTimeout]=\"pesquisaTempoSugestao\"\r\n  [showClearButton]=\"true\"\r\n  [showSelectionControls]=\"false\"\r\n  class=\"borda-pesquisa\"\r\n  displayExpr=\"titulo\"\r\n  noDataText=\"Nenhum resultado encontrado, revise o campo e tente novamente\"\r\n  placeholder=\"Pesquisar\"\r\n  title=\"pesquisar\"\r\n  valueExpr=\"categoria\"\r\n>\r\n  <a *dxTemplate=\"let data of 'item'\" style=\"cursor: pointer\">\r\n    <div class=\"icone\">\r\n      <i class=\"{{ data.icone }}\"></i>\r\n    </div>\r\n\r\n    <div>\r\n      <div class=\"fonte-etiqueta\">\r\n        {{ data.titulo }}\r\n      </div>\r\n    </div>\r\n    <div *dxTemplate=\"let menu of menu\">\r\n      <div class=\"item-icone\">\r\n        <i class=\"{{ menu.icone }}\"></i>\r\n      </div>\r\n      <div class=\"fonte-legenda-2\">\r\n        {{ data.descricao }}\r\n      </div>\r\n    </div>\r\n  </a>\r\n</dx-select-box>\r\n"
+        },
+        {
+            "name": "GlokPerfilComponent",
+            "id": "component-GlokPerfilComponent-fcff4c051e4ff290877ff6e4b7a619632a4c9c5ca0eea78f4e716d1b363bb9f23660e21cae2361311e0333ea7fe07fcf1a887dff0a099a09dbe4dc04da2b59cf",
+            "file": "projects/glok-biblioteca/src/lib/glok-perfil/glok-perfil.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-perfil",
+            "styleUrls": [
+                "./glok-perfil.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-perfil.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "emailUsuario",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "imagemUsuario",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "nomeUsuario",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "unidade",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "tabindex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "decorators": [
+                        {
+                            "name": "HostBinding",
+                            "stringifiedArguments": "'tabindex'"
+                        }
+                    ],
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "temaEscuro",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "acaoTrocar",
+                    "args": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "evento",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "direcaoInterruptor",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "tabindex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, Input, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'glok-perfil',\r\n  templateUrl: './glok-perfil.component.html',\r\n  styleUrls: ['./glok-perfil.component.scss'],\r\n})\r\nexport class GlokPerfilComponent implements OnInit {\r\n  @Input()\r\n  public emailUsuario = '';\r\n  @Input()\r\n  public imagemUsuario = '';\r\n\r\n  @Input()\r\n  public nomeUsuario = '';\r\n\r\n  @HostBinding('tabindex')\r\n  public tabindex = 0;\r\n\r\n  public temaEscuro = true;\r\n\r\n  @Input()\r\n  public unidade = '';\r\n\r\n  constructor() {}\r\n  public acaoTrocar(evento: Event): void {\r\n    evento.stopPropagation();\r\n    const temaAtual = localStorage.getItem('data-theme');\r\n    let novoTema = 'safe-escuro';\r\n\r\n    if (temaAtual === 'safe-escuro') {\r\n      novoTema = 'safe-claro';\r\n    }\r\n    document.documentElement.setAttribute('data-theme', novoTema);\r\n    localStorage.setItem('data-theme', novoTema);\r\n  }\r\n  public direcaoInterruptor(): void {\r\n    if (localStorage.getItem('data-theme') === null) {\r\n      localStorage.setItem('data-theme', 'safe-claro');\r\n    }\r\n\r\n    if (localStorage.getItem('data-theme') === 'safe-escuro') {\r\n      this.temaEscuro = true;\r\n    } else {\r\n      this.temaEscuro = false;\r\n    }\r\n  }\r\n  public ngOnInit(): void {\r\n    this.direcaoInterruptor();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import url(../glok-tema/glok-tema.component.scss);\r\n\r\n:host {\r\n\r\n  .perfil {\r\n    align-self: center;\r\n    cursor: pointer;\r\n    display: flex;\r\n    height: 32px;\r\n    justify-content: space-between;\r\n    width: 96px;\r\n    user-select: none;\r\n    margin: 8px 0px;\r\n\r\n    .imagem {\r\n      align-self: center;\r\n      border-radius: 50%;\r\n      height: 32px;\r\n      width: 32px;\r\n    }\r\n\r\n    .imagem img {\r\n      border-radius: 50%;\r\n      image-rendering: crisp-edges;\r\n      object-fit: cover;\r\n    }\r\n\r\n    div {\r\n      align-self: flex-end;\r\n      display: flex;\r\n      flex-direction: column;\r\n      justify-content: center;\r\n      justify-items: flex-start;\r\n      width: 56px;\r\n\r\n      .fonte-etiqueta {\r\n        color: var(--texto-principal);\r\n        height: 16px;\r\n        width: 56px;\r\n      }\r\n\r\n      .fonte-corpo {\r\n        align-self: flex-start;\r\n        color: var(--texto-secundario);\r\n        height: 16px;\r\n        width: 40px;\r\n      }\r\n    }\r\n  }\r\n\r\n  .detalhes {\r\n    background: var(--fundo);\r\n    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);\r\n    display: none;\r\n    height: 172px;\r\n    padding-left: 12px;\r\n    padding-top: 16px;\r\n    position: absolute;\r\n    right: 0px;\r\n    user-select: none;\r\n    width: 332px;\r\n\r\n    >.foto {\r\n      border-radius: 50%;\r\n      height: 76px;\r\n      width: 76px;\r\n    }\r\n\r\n    >.foto img {\r\n      border-radius: 50%;\r\n      object-fit: cover;\r\n    }\r\n\r\n    >.informacoes-usuario {\r\n      margin-left: 8px;\r\n    }\r\n\r\n    .mudar-unidade {\r\n      display: flex;\r\n      flex-direction: row;\r\n      margin-top: 15px;\r\n    }\r\n\r\n    .mudar-unidade .fonte-corpo {\r\n      color: var(--primario);\r\n      cursor: pointer;\r\n    }\r\n\r\n    .mudar-unidade .fonte-corpo:hover {\r\n      text-decoration: underline;\r\n    }\r\n\r\n    .mudar-unidade i {\r\n      color: var(--primario);\r\n    }\r\n\r\n    .mudar-unidade a {\r\n      text-decoration: none;\r\n    }\r\n  }\r\n\r\n  .informacoes-usuario {\r\n    margin-left: 7px;\r\n  }\r\n\r\n  .sair-popup {\r\n    color: var(--texto-erro);\r\n    display: flex;\r\n    cursor: pointer;\r\n    margin-top: 16px;\r\n  }\r\n  .fonte-sair{\r\n    color: var(--texto-erro);\r\n  }\r\n\r\n  .modo-escuro {\r\n    display: flex;\r\n    margin-top: 14px;\r\n  }\r\n\r\n  &:focus,\r\n  &:focus-within {\r\n    .detalhes {\r\n      display: flex;\r\n    }\r\n  }\r\n\r\n  .perfil-ellipsis {\r\n    float: left;\r\n    width: 100px;\r\n    white-space: nowrap;\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n  }\r\n\r\n  .interruptor {\r\n    appearance: none;\r\n    width: 37px;\r\n    height: 17px;\r\n    display: inline-block;\r\n    position: relative;\r\n    border-radius: 50px;\r\n    overflow: hidden;\r\n    outline: none;\r\n    border: none;\r\n    cursor: pointer;\r\n    background-color: var(--texto-secundario);\r\n    transition: background-color ease 0.3s;\r\n  }\r\n\r\n   .interruptor:before {\r\n    content: \"\";\r\n    display: block;\r\n    position: absolute;\r\n    z-index: 2;\r\n    width: 11px;\r\n    height: 12px;\r\n    background: var(--texto-desabilitado);\r\n    left: 4px;\r\n    top: 2.5px;\r\n    border-radius: 50%;\r\n    word-spacing: 37px;\r\n    color: #fff;\r\n    white-space: nowrap;\r\n    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;\r\n  }\r\n\r\n   .interruptor:checked:before {\r\n    left: 22px;\r\n  }\r\n\r\n   .interruptor-escuro {\r\n    appearance: none;\r\n    width: 37px;\r\n    height: 17px;\r\n    display: inline-block;\r\n    position: relative;\r\n    border-radius: 50px;\r\n    overflow: hidden;\r\n    outline: none;\r\n    border: none;\r\n    cursor: pointer;\r\n    background-color: var(--texto-desabilitado);\r\n    transition: background-color ease 0.3s;\r\n  }\r\n\r\n   .interruptor-escuro:before {\r\n    content: \"\";\r\n    display: block;\r\n    position: absolute;\r\n    z-index: 2;\r\n    width: 11px;\r\n    height: 12px;\r\n    background: var(--primario);\r\n    left: 4px;\r\n    top: 2.5px;\r\n    border-radius: 50%;\r\n    word-spacing: 37px;\r\n    color: var(--primario);\r\n    white-space: nowrap;\r\n    transition: all cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;\r\n  }\r\n\r\n   .interruptor-escuro:checked:before {\r\n    left: 22px;\r\n  }\r\n\r\n  .interruptor:hover {\r\n    background-color: var(--texto-principal);\r\n  }\r\n\r\n  .interruptor:before:hover {\r\n    background-color: var(--texto-principal);\r\n  }\r\n\r\n}\r\n",
+                    "styleUrl": "./glok-perfil.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 23
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"perfil\">\r\n  <div class=\"imagem\">\r\n    <img src=\"{{ imagemUsuario }}\" height=\"32\" width=\"32\" />\r\n  </div>\r\n  <div>\r\n    <div class=\"fonte-etiqueta\">{{ nomeUsuario }}</div>\r\n    <div\r\n    class=\"perfil-ellipsis fonte-corpo\"\r\n    style=\"display: block; width: 126%\"\r\n    title=\"{{ unidade }}\"\r\n  >\r\n    {{ unidade }}\r\n  </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"detalhes\" >\r\n\r\n  <div class=\"foto\">\r\n    <img src=\"{{ imagemUsuario }}\" height=\"77\" width=\"77\" />\r\n  </div>\r\n  <div class=\"informacoes-usuario\">\r\n    <div class=\"fonte-etiqueta\">{{ nomeUsuario }}</div>\r\n    <div\r\n    class=\"fonte-corpo perfil-ellipsis\"\r\n    title=\"{{ emailUsuario }}\"\r\n    style=\"float: none; width: 88%\"\r\n  >\r\n    {{ emailUsuario }}\r\n  </div>\r\n  <div class=\"mudar-unidade\">\r\n    <div class=\"fonte-etiqueta perfil-ellipsis\" title=\"{{ unidade }}\">\r\n      {{ unidade }}\r\n    </div>\r\n      <i class=\"glok-icone-substituir\" style=\"margin: 0px 3px 0px 3px;\"></i>\r\n      <a href=\"\" class=\"fonte-corpo\">Mudar unidade</a>\r\n    </div>\r\n    <div class=\"modo-escuro\">\r\n      <div class=\"fonte-etiqueta\" style=\"margin-right: 31px\">Modo escuro</div>\r\n\r\n      <input\r\n      [ngClass]=\"!temaEscuro ? 'interruptor': 'interruptor-escuro'\"\r\n        (click)=\"acaoTrocar($event)\"\r\n        type=\"checkbox\"\r\n        title=\"Trocar tema\"\r\n        [checked]=\"temaEscuro\"\r\n      />\r\n    </div>\r\n    <div class=\"sair-popup\">\r\n      <i class=\"glok-icone-sair\"></i>\r\n      <div class=\"fonte-corpo fonte-sair\">Sair</div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "GlokTemaComponent",
+            "id": "component-GlokTemaComponent-697f5fbf5a200ccc4731607a4f29e3886fc0c8d3bb1771a4a47740fcad5a99707eaa4502d2aa48637c2f34307158b4da3a7e3902b14c949a639526ddee3ce8c3",
+            "file": "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "glok-tema",
+            "styleUrls": [
+                "./glok-tema.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./glok-tema.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "tema",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "GlokTema",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "_tema",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "GlokTema",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [
+                {
+                    "name": "attr.tema",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "GlokTema",
+                    "decorators": []
+                },
+                {
+                    "name": "class",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, HostBinding, Input } from '@angular/core';\r\n\r\nimport { GlokTema } from './glok-tema';\r\n\r\n@Component({\r\n  selector: 'glok-tema',\r\n  templateUrl: './glok-tema.component.html',\r\n  styleUrls: ['./glok-tema.component.scss'],\r\n})\r\nexport class GlokTemaComponent {\r\n  @Input('tema')\r\n  public tema?: GlokTema;\r\n\r\n  @HostBinding('class')\r\n  public get classAttribute() {\r\n    return 'dx-swatch-' + this._tema();\r\n  }\r\n\r\n  @HostBinding('attr.tema')\r\n  public get temaAttribute() {\r\n    return this._tema();\r\n  }\r\n\r\n  private _tema(): GlokTema {\r\n    return (\r\n      this.tema ??\r\n      (localStorage.getItem('data-theme') as GlokTema) ??\r\n      GlokTema.SafeClaro\r\n    );\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":root,\r\n:host[tema=\"safe-claro\"] {\r\n  --fundo-barra: #e9e9e9;\r\n  --fundo-erro: #ebadad;\r\n  --fundo-sucesso: #b6ebad;\r\n  --fundo: #ffffff;\r\n  --hover: #e6e5f4;\r\n  --primario: #5753b6;\r\n  --selecionado: #bdbaff;\r\n  --texto-desabilitado: #c2c2c2;\r\n  --texto-erro: #d21c1c;\r\n  --texto-principal: #333333;\r\n  --texto-secundario: #858585;\r\n  --texto-sucesso: #1a700a;\r\n  --cinza3: #dfdfdf;\r\n  font-family: \"Work Sans\", sans-serif;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .logo-grande {\r\n  width: 480px;\r\n  height: 200px;\r\n  background: url(../../../assets/imagens/logo_grande_1.svg) no-repeat;\r\n  display: block;\r\n  margin: 0px auto;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .logo-header {\r\n  height: 30px;\r\n  margin-left: 40px;\r\n  width: 60px;\r\n  background: url(../../../assets/imagens/logo_pequena_1.svg) no-repeat;\r\n  background-size: contain;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .borda-pesquisa {\r\n  margin-top: 20px;\r\n  padding-left: 10px;\r\n  width: 490px;\r\n  height: 52px;\r\n  border: 2px solid var(--texto-secundario);\r\n  border-radius: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .icone-pesquisa {\r\n  font-size: 24px;\r\n  color: var(--primario);\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .container-popup {\r\n  width: 332px;\r\n  height: 172px;\r\n  background-color: var(--fundo);\r\n  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);\r\n  padding-top: 16px;\r\n  padding-left: 12px;\r\n  display: flex;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .informacoes-usuario {\r\n  margin-left: 7px;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .container-popup-mudar-unidade {\r\n  display: flex;\r\n  flex-direction: row;\r\n  margin-top: 15px;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .container-popup-mudar-unidade .mudar-unidade {\r\n  color: var(--primario);\r\n  cursor: pointer;\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .container-popup-mudar-unidade i {\r\n  font-size: 18px;\r\n  color: var(--primario);\r\n}\r\n\r\n:host[tema=\"safe-claro\"] .sair-popup {\r\n  color: var(--texto-erro);\r\n  display: flex;\r\n  cursor: pointer;\r\n  margin-top: 16px;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] {\r\n  --fundo-barra: #232323;\r\n  --fundo-erro: #ebadad;\r\n  --fundo-sucesso: #b6ebad;\r\n  --fundo: #333333;\r\n  --hover: #47475f;\r\n  --primario: #7094ff;\r\n  --selecionado: #27304c;\r\n  --texto-desabilitado: #666666;\r\n  --texto-erro: #d21c1c;\r\n  --texto-principal: #ffffff;\r\n  --texto-secundario: #858585;\r\n  --texto-sucesso: #1a700a;\r\n  --cinza3: #323232;\r\n  font-family: \"Work Sans\", sans-serif;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .logo-grande {\r\n  width: 480px;\r\n  height: 200px;\r\n  background: url(../../../assets/imagens/logo_grande_dark_1.svg) no-repeat;\r\n  display: block;\r\n  margin: 0px auto;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .logo-header {\r\n  height: 30px;\r\n  margin-left: 40px;\r\n  width: 60px;\r\n  background: url(../../../assets/imagens/logo_pequena_dark_1.svg) no-repeat;\r\n  background-size: contain;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .borda-pesquisa {\r\n  margin-top: 20px;\r\n  padding-left: 10px;\r\n  width: 490px;\r\n  height: 52px;\r\n  border: 2px solid var(--texto-secundario);\r\n  border-radius: 10px;\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .icone-pesquisa {\r\n  font-size: 24px;\r\n  color: var(--primario);\r\n}\r\n\r\n:host,\r\nbody {\r\n  background: var(--fundo);\r\n  color: var(--texto-principal);\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .container-popup {\r\n  width: 332px;\r\n  height: 172px;\r\n  background-color: var(--fundo);\r\n  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);\r\n  padding-top: 16px;\r\n  padding-left: 12px;\r\n  display: flex;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .informacoes-usuario {\r\n  margin-left: 7px;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n:host[tema=\"safe-escuro\"] .container-popup-mudar-unidade {\r\n  display: flex;\r\n  flex-direction: row;\r\n  margin-top: 15px;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .container-popup-mudar-unidade .mudar-unidade {\r\n  color: var(--primario);\r\n  cursor: pointer;\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .container-popup-mudar-unidade i {\r\n  font-size: 18px;\r\n  color: var(--primario);\r\n}\r\n\r\n:host[tema=\"safe-escuro\"] .sair-popup {\r\n  color: var(--texto-erro);\r\n  display: flex;\r\n  cursor: pointer;\r\n  margin-top: 16px;\r\n}\r\n\r\n.modo-escuro {\r\n  display: flex;\r\n  align-items: center;\r\n  margin-top: 14px;\r\n}\r\n\r\n//barra de pesquisa\r\n\r\n.dx-scrollview-bottom-pocket {\r\n  display: none;\r\n}\r\n\r\n.dx-scrollview-top-pocket {\r\n  display: none;\r\n}\r\n\r\n.dx-scrollview-loadpanel {\r\n  display: none;\r\n}\r\n\r\n.dx-selectbox-container {\r\n  position: relative;\r\n  width: 478px;\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item .dx-state-active {\r\n  background-color: var(--primario);\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-list .dx-empty-message,\r\n.dx-list-item {\r\n  border-top: 1px solid transparent;\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-dropdowneditor-button.dx-state-active .dx-dropdowneditor-icon,\r\n.dx-dropdowneditor.dx-dropdowneditor-active .dx-dropdowneditor-icon {\r\n  background-color: var(--hover);\r\n  border-color: transparent;\r\n  color: var(--primario);\r\n  opacity: 1;\r\n}\r\n\r\n.dx-dropdowneditor-icon {\r\n  color: var(--primario);\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-active {\r\n  background-color: var(--hover);\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-dropdowneditor.dx-state-active .dx-dropdowneditor-icon,\r\n.dx-dropdowneditor.dx-state-hover:not(.dx-custom-button-hovered) .dx-dropdowneditor-icon {\r\n  background-color: var(--hover);\r\n  border-color: transparent;\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused {\r\n  background-color: var(--hover);\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-hover {\r\n  background-color: var(--hover);\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected {\r\n  background-color: var(--selecionado);\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected.dx-state-hover:not(.dx-state-focused) {\r\n  background-color: var(--hover);\r\n\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused.dx-list-item-selected {\r\n  background-color: var(--hover);\r\n\r\n  color: var(--texto-principal);\r\n}\r\n\r\n.dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {\r\n  display: flex;\r\n}\r\n\r\n.dx-texteditor.dx-editor-outlined {\r\n  background: var(--fundo);\r\n  border: 2px solid var(--texto-secundario);\r\n  border-radius: 10px;\r\n}\r\n\r\n.dx-selectbox-popup-wrapper .dx-list {\r\n  background-color: var(--fundo);\r\n}\r\n\r\n.dx-popup-wrapper>.dx-overlay-content {\r\n  border: 0px transparent;\r\n}\r\n\r\n.dx-popup-wrapper>.dx-overlay-content {\r\n  background: transparent;\r\n}\r\n\r\n.dx-texteditor-input {\r\n  margin: 0;\r\n  padding: 7px 9px 8px;\r\n  background: rgba(0, 0, 0, 0);\r\n  color: var(--texto-principal);\r\n  font-size: 1em;\r\n  border-radius: 4px;\r\n  min-height: 34px;\r\n}\r\n\r\n.dx-texteditor.dx-state-focused.dx-editor-outlined {\r\n  border-color: var(--texto-secundario);\r\n}\r\n\r\n.dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {\r\n  display: flex;\r\n  align-items: center;\r\n}\r\n\r\n//fim da barra de pesquisa\r\n\r\n// fontes\r\n.cabecalho1 {\r\n  color: var(--texto-principal);\r\n  font-size: 28px;\r\n  font-weight: 400;\r\n}\r\n\r\n.fonte-cabecalho-modal-confirmacao {\r\n  color: var(--texto-principal);\r\n  font-size: 28px;\r\n  font-weight: 600;\r\n}\r\n\r\n.cabecalho2 {\r\n  color: var(--texto-principal);\r\n  font-size: 20px;\r\n  font-weight: 600;\r\n}\r\n\r\n.fonte-titulo {\r\n  color: var(--texto-principal);\r\n  font-size: 20px;\r\n  font-weight: 500;\r\n}\r\n\r\n.fonte-subtitulo {\r\n  color: var(--texto-principal);\r\n  font-size: 16px;\r\n  font-weight: 400;\r\n}\r\n\r\n.fonte-menu {\r\n  color: var(--texto-principal);\r\n  font-size: 16px;\r\n  font-weight: 500;\r\n}\r\n\r\n.fonte-avisos {\r\n  color: var(--texto-principal);\r\n  font-size: 16px;\r\n  font-weight: 600;\r\n}\r\n\r\n.fonte-titulo-grid {\r\n  color: var(--texto-principal);\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n}\r\n\r\n.fonte-etiqueta {\r\n  color: var(--texto-principal);\r\n  font-size: 14px;\r\n  font-weight: 600;\r\n}\r\n\r\n.fonte-corpo {\r\n  color: var(--texto-principal);\r\n  font-size: 14px;\r\n  font-weight: 400;\r\n}\r\n\r\n.fonte-corpo2 {\r\n  color: var(--texto-principal);\r\n  font-size: 12px;\r\n  font-weight: 400;\r\n}\r\n\r\n.fonte-legenda {\r\n  color: var(--texto-principal);\r\n  font-size: 10px;\r\n  font-weight: 400;\r\n}\r\n",
+                    "styleUrl": "./glok-tema.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classAttribute": {
+                    "name": "classAttribute",
+                    "getSignature": {
+                        "name": "classAttribute",
+                        "type": "",
+                        "returnType": "",
+                        "line": 15
+                    }
+                },
+                "temaAttribute": {
+                    "name": "temaAttribute",
+                    "getSignature": {
+                        "name": "temaAttribute",
+                        "type": "",
+                        "returnType": "",
+                        "line": 20
+                    }
+                }
+            },
+            "templateData": "<ng-content></ng-content>\r\n"
+        },
+        {
+            "name": "MockAppComponent",
+            "id": "component-MockAppComponent-c3b243e4d46f7b6ba74d138debd5ebdc6c5a93aa2fbb06baff19ae2773ed57ec41df0b1fe5a5e70388a41605fa613397ac474a7b480ff55517f81b8198edfdfd",
+            "file": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mock-app",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<glok-tema>\n  <ng-content></ng-content>\n  <router-outlet (activate)=\"acaoAtivado($event)\"></router-outlet>\n</glok-tema>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "acaoAtivado",
+                    "args": [
+                        {
+                            "name": "rota",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "rota",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ActivatedRoute, Route, RouterModule } from '@angular/router';\r\nimport { DecoratorFunction, StoryApi } from '@storybook/addons';\r\nimport {\r\n  AngularFramework,\r\n  componentWrapperDecorator,\r\n  moduleMetadata,\r\n} from '@storybook/angular';\r\n\r\nimport { GlokAbasService } from './glok-abas/glok-abas.service';\r\nimport { GlokBibliotecaModule } from './glok-biblioteca.module';\r\n\r\n@Component({\r\n  selector: 'mock-rota',\r\n  template: ` {{ rota }} `,\r\n})\r\nclass MockRotaComponent {\r\n  public rota = 'sem rota';\r\n\r\n  constructor(_activateRoute: ActivatedRoute) {\r\n    if (_activateRoute.snapshot.data) {\r\n      this.rota = _activateRoute.snapshot.data['rota'];\r\n    }\r\n  }\r\n}\r\n\r\n@Component({\r\n  selector: 'mock-app',\r\n  template: `\r\n    <glok-tema>\r\n      <ng-content></ng-content>\r\n      <router-outlet (activate)=\"acaoAtivado($event)\"></router-outlet>\r\n    </glok-tema>\r\n  `,\r\n})\r\nclass MockAppComponent {\r\n  constructor() {}\r\n\r\n  public acaoAtivado(rota: any): void {}\r\n}\r\n\r\nexport function GlokStories() {\r\n  const retorno = moduleMetadata({\r\n    declarations: [MockAppComponent],\r\n    imports: [\r\n      GlokBibliotecaModule,\r\n      RouterModule.forRoot(\r\n        [\r\n          {\r\n            path: '',\r\n            redirectTo: 'tela-inicial',\r\n            pathMatch: 'full',\r\n          },\r\n          ...[\r\n            'clientes',\r\n            'configuracoes',\r\n            'produtos',\r\n            'servicos',\r\n            'tela-inicial',\r\n          ].map(\r\n            (p) =>\r\n              ({\r\n                path: p,\r\n                component: MockRotaComponent,\r\n                data: { rota: p },\r\n                children: [\r\n                  {\r\n                    path: 'fechar',\r\n                    redirectTo: '',\r\n                  },\r\n                ],\r\n              } as Route)\r\n          ),\r\n        ],\r\n        {\r\n          useHash: true,\r\n        }\r\n      ),\r\n    ],\r\n    providers: [GlokAbasService],\r\n  });\r\n  return retorno;\r\n}\r\n\r\nexport function GlokComponentWrapper() {\r\n  return componentWrapperDecorator(MockAppComponent);\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 36
+            }
+        },
+        {
+            "name": "MockRotaComponent",
+            "id": "component-MockRotaComponent-c3b243e4d46f7b6ba74d138debd5ebdc6c5a93aa2fbb06baff19ae2773ed57ec41df0b1fe5a5e70388a41605fa613397ac474a7b480ff55517f81b8198edfdfd",
+            "file": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "mock-rota",
+            "styleUrls": [],
+            "styles": [],
+            "template": "{{ rota }}",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "rota",
+                    "defaultValue": "'sem rota'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { ActivatedRoute, Route, RouterModule } from '@angular/router';\r\nimport { DecoratorFunction, StoryApi } from '@storybook/addons';\r\nimport {\r\n  AngularFramework,\r\n  componentWrapperDecorator,\r\n  moduleMetadata,\r\n} from '@storybook/angular';\r\n\r\nimport { GlokAbasService } from './glok-abas/glok-abas.service';\r\nimport { GlokBibliotecaModule } from './glok-biblioteca.module';\r\n\r\n@Component({\r\n  selector: 'mock-rota',\r\n  template: ` {{ rota }} `,\r\n})\r\nclass MockRotaComponent {\r\n  public rota = 'sem rota';\r\n\r\n  constructor(_activateRoute: ActivatedRoute) {\r\n    if (_activateRoute.snapshot.data) {\r\n      this.rota = _activateRoute.snapshot.data['rota'];\r\n    }\r\n  }\r\n}\r\n\r\n@Component({\r\n  selector: 'mock-app',\r\n  template: `\r\n    <glok-tema>\r\n      <ng-content></ng-content>\r\n      <router-outlet (activate)=\"acaoAtivado($event)\"></router-outlet>\r\n    </glok-tema>\r\n  `,\r\n})\r\nclass MockAppComponent {\r\n  constructor() {}\r\n\r\n  public acaoAtivado(rota: any): void {}\r\n}\r\n\r\nexport function GlokStories() {\r\n  const retorno = moduleMetadata({\r\n    declarations: [MockAppComponent],\r\n    imports: [\r\n      GlokBibliotecaModule,\r\n      RouterModule.forRoot(\r\n        [\r\n          {\r\n            path: '',\r\n            redirectTo: 'tela-inicial',\r\n            pathMatch: 'full',\r\n          },\r\n          ...[\r\n            'clientes',\r\n            'configuracoes',\r\n            'produtos',\r\n            'servicos',\r\n            'tela-inicial',\r\n          ].map(\r\n            (p) =>\r\n              ({\r\n                path: p,\r\n                component: MockRotaComponent,\r\n                data: { rota: p },\r\n                children: [\r\n                  {\r\n                    path: 'fechar',\r\n                    redirectTo: '',\r\n                  },\r\n                ],\r\n              } as Route)\r\n          ),\r\n        ],\r\n        {\r\n          useHash: true,\r\n        }\r\n      ),\r\n    ],\r\n    providers: [GlokAbasService],\r\n  });\r\n  return retorno;\r\n}\r\n\r\nexport function GlokComponentWrapper() {\r\n  return componentWrapperDecorator(MockAppComponent);\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "_activateRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "_activateRoute",
+                        "type": "ActivatedRoute",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
         }
     ],
     "modules": [
         {
             "name": "GlokBibliotecaModule",
-            "id": "module-GlokBibliotecaModule-0910103a0103ca20328a6ebfdbeeeab5b51a209d477586aa3cc2823a1731335a2e6cc73ad9b1523eedb2d9627d4a077f68dc069c4b9e8e79ec352b8501d24d7e",
+            "id": "module-GlokBibliotecaModule-61c8887854e304977c8cdb2bfe59ebfb04814354e71ea63c7e1cf8979fd3a5b48d739027ab464981368bc588103c2b1ec951a5ba6c71027e360f6aa958c6c4de",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "projects/glok-biblioteca/src/lib/glok-biblioteca.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { GlokMenuComponent } from './glok-menu/glok-menu.component';\nimport { GlokBotaoComponent } from './glok-botao/glok-botao.component';\n\n@NgModule({\n  declarations: [GlokMenuComponent, GlokBotaoComponent],\n  imports: [],\n  exports: [GlokMenuComponent],\n})\nexport class GlokBibliotecaModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { RouterModule } from '@angular/router';\r\nimport { DxSelectBoxModule, DxSwitchModule } from 'devextreme-angular';\r\nimport { GlokAbasComponent } from './glok-abas/glok-abas.component';\r\nimport { GlokBotaoComponent } from './glok-botao/glok-botao.component';\r\nimport { GlokCabecalhoComponent } from './glok-cabecalho/glok-cabecalho.component';\r\nimport { GlokListaPaineisAtalhoComponent } from './glok-lista-paineis-atalho/glok-lista-paineis-atalho.component';\r\nimport { GlokMenuPesquisaComponent } from './glok-menu-pesquisa/glok-menu-pesquisa.component';\r\nimport { GlokMenuComponent } from './glok-menu/glok-menu.component';\r\nimport { GlokPerfilComponent } from './glok-perfil/glok-perfil.component';\r\nimport { GlokTemaComponent } from './glok-tema/glok-tema.component';\r\n\r\n@NgModule({\r\n  declarations: [\r\n    GlokAbasComponent,\r\n    GlokBotaoComponent,\r\n    GlokCabecalhoComponent,\r\n    GlokListaPaineisAtalhoComponent,\r\n    GlokMenuComponent,\r\n    GlokMenuPesquisaComponent,\r\n    GlokPerfilComponent,\r\n    GlokTemaComponent,\r\n  ],\r\n  exports: [\r\n    GlokAbasComponent,\r\n    GlokBotaoComponent,\r\n    GlokCabecalhoComponent,\r\n    GlokListaPaineisAtalhoComponent,\r\n    GlokMenuComponent,\r\n    GlokMenuPesquisaComponent,\r\n    GlokPerfilComponent,\r\n    GlokTemaComponent,\r\n  ],\r\n  imports: [CommonModule, DxSwitchModule, DxSelectBoxModule, RouterModule],\r\n})\r\nexport class GlokBibliotecaModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -372,10 +1465,28 @@
                     "type": "declarations",
                     "elements": [
                         {
+                            "name": "GlokAbasComponent"
+                        },
+                        {
                             "name": "GlokBotaoComponent"
                         },
                         {
+                            "name": "GlokCabecalhoComponent"
+                        },
+                        {
+                            "name": "GlokListaPaineisAtalhoComponent"
+                        },
+                        {
                             "name": "GlokMenuComponent"
+                        },
+                        {
+                            "name": "GlokMenuPesquisaComponent"
+                        },
+                        {
+                            "name": "GlokPerfilComponent"
+                        },
+                        {
+                            "name": "GlokTemaComponent"
                         }
                     ]
                 },
@@ -387,7 +1498,28 @@
                     "type": "exports",
                     "elements": [
                         {
+                            "name": "GlokAbasComponent"
+                        },
+                        {
+                            "name": "GlokBotaoComponent"
+                        },
+                        {
+                            "name": "GlokCabecalhoComponent"
+                        },
+                        {
+                            "name": "GlokListaPaineisAtalhoComponent"
+                        },
+                        {
                             "name": "GlokMenuComponent"
+                        },
+                        {
+                            "name": "GlokMenuPesquisaComponent"
+                        },
+                        {
+                            "name": "GlokPerfilComponent"
+                        },
+                        {
+                            "name": "GlokTemaComponent"
                         }
                     ]
                 },
@@ -424,9 +1556,99 @@
                 "type": "literal type"
             }
         ],
-        "functions": [],
-        "typealiases": [],
-        "enumerations": [],
+        "functions": [
+            {
+                "name": "GlokComponentWrapper",
+                "file": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": []
+            },
+            {
+                "name": "GlokStories",
+                "file": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": []
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "GlokAba",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "projects/glok-biblioteca/src/lib/glok-abas/glok-aba.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 181
+            },
+            {
+                "name": "GlokMenu",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 181
+            },
+            {
+                "name": "GlokMenuItem",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu-itens.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 181
+            },
+            {
+                "name": "GlokPainel",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "projects/glok-biblioteca/src/lib/glok-lista-paineis-atalho/glok-painel.type.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 181
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "GlokTema",
+                "childs": [
+                    {
+                        "name": "SafeClaro",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "safe-claro"
+                    },
+                    {
+                        "name": "SafeEscuro",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "value": "safe-escuro"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "file": "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.ts"
+            }
+        ],
         "groupedVariables": {
             "projects/glok-biblioteca/src/test.ts": [
                 {
@@ -450,15 +1672,135 @@
                 }
             ]
         },
-        "groupedFunctions": {},
-        "groupedEnumerations": {},
-        "groupedTypeAliases": {}
+        "groupedFunctions": {
+            "projects/glok-biblioteca/src/lib/glok-stories.ts": [
+                {
+                    "name": "GlokComponentWrapper",
+                    "file": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": []
+                },
+                {
+                    "name": "GlokStories",
+                    "file": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": []
+                }
+            ]
+        },
+        "groupedEnumerations": {
+            "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.ts": [
+                {
+                    "name": "GlokTema",
+                    "childs": [
+                        {
+                            "name": "SafeClaro",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "safe-claro"
+                        },
+                        {
+                            "name": "SafeEscuro",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "value": "safe-escuro"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "file": "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "projects/glok-biblioteca/src/lib/glok-abas/glok-aba.type.ts": [
+                {
+                    "name": "GlokAba",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "projects/glok-biblioteca/src/lib/glok-abas/glok-aba.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 181
+                }
+            ],
+            "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.type.ts": [
+                {
+                    "name": "GlokMenu",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 181
+                }
+            ],
+            "projects/glok-biblioteca/src/lib/glok-menu/glok-menu-itens.type.ts": [
+                {
+                    "name": "GlokMenuItem",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu-itens.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 181
+                }
+            ],
+            "projects/glok-biblioteca/src/lib/glok-lista-paineis-atalho/glok-painel.type.ts": [
+                {
+                    "name": "GlokPainel",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "projects/glok-biblioteca/src/lib/glok-lista-paineis-atalho/glok-painel.type.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 181
+                }
+            ]
+        }
     },
     "routes": [],
     "coverage": {
         "count": 0,
         "status": "low",
         "files": [
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-abas/glok-abas.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokAbasComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-abas/glok-abas.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "GlokAbasService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
             {
                 "filePath": "projects/glok-biblioteca/src/lib/glok-botao/glok-botao.component.ts",
                 "type": "component",
@@ -469,12 +1811,113 @@
                 "status": "low"
             },
             {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-cabecalho/glok-cabecalho.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokCabecalhoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-lista-paineis-atalho/glok-lista-paineis-atalho.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokListaPaineisAtalhoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-menu-pesquisa/glok-menu-pesquisa.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokMenuPesquisaComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/10",
+                "status": "low"
+            },
+            {
                 "filePath": "projects/glok-biblioteca/src/lib/glok-menu/glok-menu.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "GlokMenuComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/10",
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-menu/menu.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "MenuService",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-perfil/glok-perfil.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokPerfilComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MockAppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "MockRotaComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "GlokComponentWrapper",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-stories.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "GlokStories",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GlokTemaComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "projects/glok-biblioteca/src/lib/glok-tema/glok-tema.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "GlokTemaService",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

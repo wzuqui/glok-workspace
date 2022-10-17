@@ -1,0 +1,54 @@
+<div class="perfil">
+  <div class="imagem">
+    <img src="{{ imagemUsuario }}" height="32" width="32" />
+  </div>
+  <div>
+    <div class="fonte-etiqueta">{{ nomeUsuario }}</div>
+    <div
+    class="perfil-ellipsis fonte-corpo"
+    style="display: block; width: 126%"
+    title="{{ unidade }}"
+  >
+    {{ unidade }}
+  </div>
+  </div>
+</div>
+
+<div class="detalhes" >
+
+  <div class="foto">
+    <img src="{{ imagemUsuario }}" height="77" width="77" />
+  </div>
+  <div class="informacoes-usuario">
+    <div class="fonte-etiqueta">{{ nomeUsuario }}</div>
+    <div
+    class="fonte-corpo perfil-ellipsis"
+    title="{{ emailUsuario }}"
+    style="float: none; width: 88%"
+  >
+    {{ emailUsuario }}
+  </div>
+  <div class="mudar-unidade">
+    <div class="fonte-etiqueta perfil-ellipsis" title="{{ unidade }}">
+      {{ unidade }}
+    </div>
+      <i class="glok-icone-substituir" style="margin: 0px 3px 0px 3px;"></i>
+      <a href="" class="fonte-corpo">Mudar unidade</a>
+    </div>
+    <div class="modo-escuro">
+      <div class="fonte-etiqueta" style="margin-right: 31px">Modo escuro</div>
+
+      <input
+      [ngClass]="!temaEscuro ? 'interruptor': 'interruptor-escuro'"
+        (click)="acaoTrocar($event)"
+        type="checkbox"
+        title="Trocar tema"
+        [checked]="temaEscuro"
+      />
+    </div>
+    <div class="sair-popup">
+      <i class="glok-icone-sair"></i>
+      <div class="fonte-corpo fonte-sair">Sair</div>
+    </div>
+  </div>
+</div>

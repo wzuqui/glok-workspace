@@ -1,0 +1,49 @@
+{
+  "applicationEngine": "angular",
+  "build": {
+    "commands": [
+      {
+        "command": "build-theme",
+        "options": {
+          "inputFile": "projects/glok-biblioteca/assets/devextreme/temas/metadata.base.json",
+          "outputFile": "projects/glok-biblioteca/assets/devextreme/temas/generated/tema.base.css"
+        }
+      },
+      {
+        "command": "build-theme",
+        "options": {
+          "inputFile": "projects/glok-biblioteca/assets/devextreme/temas/metadata.safe-claro.json",
+          "outputFile": "projects/glok-biblioteca/assets/devextreme/temas/generated/tema.safe-claro.css"
+        }
+      },
+      {
+        "command": "build-theme",
+        "options": {
+          "inputFile": "projects/glok-biblioteca/assets/devextreme/temas/metadata.safe-escuro.json",
+          "outputFile": "projects/glok-biblioteca/assets/devextreme/temas/generated/tema.safe-escuro.css"
+        }
+      },
+      {
+        "command": "export-theme-vars",
+        "options": {
+          "inputFile": "projects/glok-biblioteca/assets/devextreme/temas/metadata.base.json",
+          "outputFile": "projects/glok-biblioteca/assets/devextreme/temas/generated/variaveis.base.scss"
+        }
+      },
+      {
+        "command": "export-theme-vars",
+        "options": {
+          "inputFile": "projects/glok-biblioteca/assets/devextreme/temas/metadata.safe-claro.json",
+          "outputFile": "projects/glok-biblioteca/assets/devextreme/temas/generated/variaveis.safe-claro.scss"
+        }
+      },
+      {
+        "command": "export-theme-vars",
+        "options": {
+          "inputFile": "projects/glok-biblioteca/assets/devextreme/temas/metadata.safe-escuro.json",
+          "outputFile": "projects/glok-biblioteca/assets/devextreme/temas/generated/variaveis.safe-escuro.scss"
+        }
+      }
+    ]
+  }
+}

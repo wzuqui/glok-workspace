@@ -11,4 +11,15 @@ export const parameters = {
     },
   },
   docs: { inlineStories: true },
+  themes: {
+    default: "safe-claro",
+    list: [
+      { name: "safe-claro", class: "safe-claro", color: "#f5f5f5" },
+      { name: "safe-escuro", class: "safe-escuro", color: "#000" },
+    ],
+    onChange(tema) {
+      console.log(tema);
+      localStorage.setItem("data-theme", tema.name);
+    },
+  }
 }

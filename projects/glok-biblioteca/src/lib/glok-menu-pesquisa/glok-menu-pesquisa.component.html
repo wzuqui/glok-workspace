@@ -1,0 +1,36 @@
+<dx-select-box
+  (onItemClick)="resetarPesquisa($event)"
+  [dataSource]="selectBoxDataSource"
+  [grouped]="true"
+  [searchEnabled]="true"
+  [searchExpr]="pesquisarPor"
+  [searchTimeout]="pesquisaTempoSugestao"
+  [showClearButton]="true"
+  [showSelectionControls]="false"
+  class="borda-pesquisa"
+  displayExpr="titulo"
+  noDataText="Nenhum resultado encontrado, revise o campo e tente novamente"
+  placeholder="Pesquisar"
+  title="pesquisar"
+  valueExpr="categoria"
+>
+  <a *dxTemplate="let data of 'item'" style="cursor: pointer">
+    <div class="icone">
+      <i class="{{ data.icone }}"></i>
+    </div>
+
+    <div>
+      <div class="fonte-etiqueta">
+        {{ data.titulo }}
+      </div>
+    </div>
+    <div *dxTemplate="let menu of menu">
+      <div class="item-icone">
+        <i class="{{ menu.icone }}"></i>
+      </div>
+      <div class="fonte-legenda-2">
+        {{ data.descricao }}
+      </div>
+    </div>
+  </a>
+</dx-select-box>

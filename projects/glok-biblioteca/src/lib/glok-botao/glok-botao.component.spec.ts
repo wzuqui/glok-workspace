@@ -8,9 +8,8 @@ describe('GlokBotaoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GlokBotaoComponent ]
-    })
-    .compileComponents();
+      declarations: [GlokBotaoComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(GlokBotaoComponent);
     component = fixture.componentInstance;

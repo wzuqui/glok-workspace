@@ -1,0 +1,8 @@
+{
+  "items": [],
+  "assetsBasePath": "../../../../../../node_modules/devextreme/dist/css/",
+  "base": true,
+  "baseTheme": "generic.light",
+  "makeSwatch": false,
+  "outputColorScheme": "base"
+}

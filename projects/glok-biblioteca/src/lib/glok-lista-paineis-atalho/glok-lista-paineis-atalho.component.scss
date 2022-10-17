@@ -1,0 +1,49 @@
+:host {
+  .lista-cards {
+    display: flex;
+    flex-direction: row;
+  }
+  .fundo-card {
+    border-radius: 4px;
+    background: var(--fundo-barra);
+    box-shadow: 0px 1.6px 3.6px rgb(0 0 0 / 13%),
+      0px 0.3px 0.9px rgb(0 0 0 / 10%);
+    cursor: pointer;
+    margin-top: 8px;
+    margin-right: 30px;
+    width: 170px;
+    height: 90px;
+  }
+  .fundo-card:hover {
+    background-color: var(--hover);
+    opacity: 1;
+    transition: background-color 0.2s ease-out 50ms;
+  }
+  a {
+    text-decoration: none;
+    color: var(--texto-principal);
+  }
+  .titulo-card {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 16px;
+    margin-left: 14px;
+    margin-right: 14px;
+    margin-top: 6px;
+    text-align: center;
+  }
+  .icone-card {
+    color: var(--primario);
+    font-size: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 10px;
+  }
+}
+.container {
+  margin-top: 76px;
+}
+.container h1 {
+  margin-bottom: 8px;
+}

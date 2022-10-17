@@ -1,98 +1,64 @@
-import { Component, ElementRef, HostBinding } from '@angular/core';
-import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 import {
   componentWrapperDecorator,
   moduleMetadata,
   storiesOf,
 } from '@storybook/angular';
+
+import { RouterModule } from '@angular/router';
 import { GlokBibliotecaModule } from '../glok-biblioteca.module';
+import { GlokTema } from '../glok-tema/glok-tema';
+import { GlokTemaComponent } from '../glok-tema/glok-tema.component';
 import { GlokMenuComponent } from './glok-menu.component';
-
-@Component({
-  selector: 'mock-app',
-  template: `
-    <h1>Mock App</h1>
-    <ng-content></ng-content>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-  `,
-})
-class MockAppComponent {
-  @HostBinding('tabindex')
-  public tabindex = 0;
-}
-
-@Component({
-  selector: 'mock-rota',
-  template: '{{rota}}',
-})
-class MockRotaComponent {
-  public rota: string = 'sem rota';
-
-  constructor(_activatedRoute: ActivatedRoute) {
-    this.rota = _activatedRoute.snapshot.data['rota'];
-  }
-}
-
-const rotas = ['pessoas', 'veiculos', 'equipamentos', 'historico'].map(
-  (rota) =>
-    ({
-      path: rota,
-      data: {
-        rota: rota,
-      },
-      component: MockRotaComponent,
-    } as Route)
-);
 
 storiesOf('menu', module)
   .addDecorator(
     moduleMetadata({
-      declarations: [MockAppComponent],
-      imports: [
-        GlokBibliotecaModule,
-        RouterModule.forRoot(
-          [
-            ...rotas,
-            {
-              path: '**',
-              pathMatch: 'full',
-              redirectTo: '',
-            },
-          ],
-          {
-            // enableTracing: true
-          }
-        ),
-      ],
+      imports: [GlokBibliotecaModule, RouterModule.forRoot([])],
     })
   )
-  .addDecorator(componentWrapperDecorator(MockAppComponent))
+  .addDecorator(
+    componentWrapperDecorator(GlokTemaComponent, {
+      tema: GlokTema.SafeEscuro,
+    } as Partial<GlokTemaComponent>)
+  )
   .add('normal', () => ({
     component: GlokMenuComponent,
     props: {
       menu: [
         {
+          aberto: true,
           titulo: 'Cadastros',
-          itens: [
+          GlokMenuItens: [
             {
-              titulo: 'Pessoas',
-              rota: 'pessoas',
+              icone: 'glok-icone-clientes',
+              titulo: 'Clientes',
+              descricao: 'Cadastro de clientes',
+              rota: 'clientes',
             },
             {
-              titulo: 'Veículos',
-              rota: 'veiculos',
+              icone: 'glok-icone-produtos',
+              titulo: 'Produtos',
+              descricao: 'Cadastro de produtos',
+              rota: 'produtos',
             },
             {
-              titulo: 'Equipamentos',
-              rota: 'equipamentos',
+              icone: 'glok-icone-serviços',
+              titulo: 'Serviços',
+              descricao: 'Cadastro de serviços',
+              rota: 'servicos',
             },
           ],
         },
         {
-          titulo: 'Relatórios',
-          itens: [{ titulo: 'Histórico', rota: 'historico' }],
+          aberto: true,
+          titulo: 'Configurações',
+          GlokMenuItens: [
+            {
+              icone: 'glok-icone-circulo',
+              titulo: 'Configurações',
+              descricao: 'Configurações gerais do sistema que não vai caber',
+            },
+          ],
         },
       ],
     } as Partial<GlokMenuComponent>,

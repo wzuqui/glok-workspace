@@ -1,0 +1,36 @@
+
+.glok-icone-expandir-para-cima { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe971;&nbsp;'); }
+.glok-icone-expandir-para-baixo { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe972;&nbsp;'); }
+.glok-icone-expandir-para esquerda { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe973;&nbsp;'); }
+.glok-icone-expandir-para-direita { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe974;&nbsp;'); }
+.glok-icone-clientes { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef79;&nbsp;'); }
+.glok-icone-contatos { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef7a;&nbsp;'); }
+.glok-icone-sugestões { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef7b;&nbsp;'); }
+.glok-icone-circulo { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef7c;&nbsp;'); }
+.glok-icone-pesquisa { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef7d;&nbsp;'); }
+.glok-icone-exportar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef7e;&nbsp;'); }
+.glok-icone-pessoa-juridica { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef80;&nbsp;'); }
+.glok-icone-pessoa-fisica { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef81;&nbsp;'); }
+.glok-icone-documento-e-mala { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef82;&nbsp;'); }
+.glok-icone-produtos { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef83;&nbsp;'); }
+.glok-icone-serviços { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef84;&nbsp;'); }
+.glok-icone-sair-1 { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef85;&nbsp;'); }
+.glok-icone-subir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef86;&nbsp;'); }
+.glok-icone-substituir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef87;&nbsp;'); }
+.glok-icone-documentos { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef88;&nbsp;'); }
+.glok-icone-unidade { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef89;&nbsp;'); }
+.glok-icone-caixa-verificado { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef8a;&nbsp;'); }
+.glok-icone-caixa-selecionada { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef8b;&nbsp;'); }
+.glok-icone-caixa-sem-seleção { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef8c;&nbsp;'); }
+.glok-icone-verificado { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef8d;&nbsp;'); }
+.glok-icone-circulo-verificado { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef8e;&nbsp;'); }
+.glok-icone-editar-colunas { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef90;&nbsp;'); }
+.glok-icone-excluir { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef91;&nbsp;'); }
+.glok-icone-editar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef92;&nbsp;'); }
+.glok-icone-tela-principal { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef93;&nbsp;'); }
+.glok-icone-menu { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef94;&nbsp;'); }
+.glok-icone-adicionar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef95;&nbsp;'); }
+.glok-icone-fechar-menu { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef96;&nbsp;'); }
+.glok-icone-atualizar { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xef97;&nbsp;'); }
+.glok-icone-sair { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf730;&nbsp;'); }
+.glok-icone-favorito { *zoom: expression( this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xf732;&nbsp;'); }

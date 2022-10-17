@@ -1,0 +1,34 @@
+:host {
+
+  background-color: var(--fundo-barra);
+  border-bottom: 1px solid;
+  border-color: var(--primario);
+  display: flex;
+  flex-direction: row;
+  height: 48px;
+  width: 1920px;
+  user-select: none;
+
+  .menu {
+    width: 92px;
+    z-index: 1;
+  }
+
+  .logo {
+    height: 30px;
+    margin-top: 9px;
+    width: 60px;
+  }
+
+  .abas {
+    margin-left: 40px;
+    width: auto;
+  }
+
+  .perfil {
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: 24px;
+    max-width: 100px;
+  }
+}

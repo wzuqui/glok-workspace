@@ -31,6 +31,18 @@
             "tsConfig": "projects/glok-biblioteca/tsconfig.spec.json",
             "karmaConfig": "projects/glok-biblioteca/karma.conf.js"
           }
+        },
+        "storybook": {
+          "builder": "@storybook/angular:start-storybook",
+          "options": {
+            "browserTarget": "glok-biblioteca:build",
+            "styles": [
+              "projects/glok-biblioteca/assets/ravex/css/glok-embedded.css",
+              "projects/glok-biblioteca/assets/devextreme/temas/generated/tema.base.css",
+              "projects/glok-biblioteca/assets/devextreme/temas/generated/tema.safe-claro.css",
+              "projects/glok-biblioteca/assets/devextreme/temas/generated/tema.safe-escuro.css"
+            ]
+          }
         }
       }
     }

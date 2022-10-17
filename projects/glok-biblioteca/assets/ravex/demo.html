@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <meta charset="UTF-8">
+  <style>
+    html {
+      font-size: 100%;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    a:focus {
+      outline: thin dotted #333;
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+    }
+    a:hover,
+    a:active {
+      outline: 0;
+    }
+    input {
+      margin: 0;
+      font-size: 100%;
+      vertical-align: middle;
+      *overflow: visible;
+      line-height: normal;
+    }
+    input::-moz-focus-inner {
+      padding: 0;
+      border: 0;
+    }
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 20px;
+      color: #333;
+      background-color: #fff;
+    }
+    a {
+      color: #08c;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #005580;
+      text-decoration: underline;
+    }
+    .row {
+      margin-left: -20px;
+      *zoom: 1;
+    }
+    .row:before,
+    .row:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    .row:after {
+      clear: both;
+    }
+    .span3 {
+      float: left;
+      min-height: 1px;
+      margin-left: 20px;
+      width: 220px;
+    }
+    .container {
+      width: 940px;
+      margin-right: auto;
+      margin-left: auto;
+      *zoom: 1;
+    }
+    .container:before,
+    .container:after {
+      display: table;
+      content: "";
+      line-height: 0;
+    }
+    .container:after {
+      clear: both;
+    }
+    small {
+      font-size: 85%;
+    }
+    h1 {
+      margin: 10px 0;
+      font-family: inherit;
+      font-weight: bold;
+      line-height: 20px;
+      color: inherit;
+      text-rendering: optimizelegibility;
+      line-height: 40px;
+      font-size: 38.5px;
+    }
+    h1 small {
+      font-weight: normal;
+      line-height: 1;
+      color: #999;
+      font-size: 24.5px;
+    }
+
+    body {
+      margin-top: 90px;
+    }
+    .header {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      margin-left: -480px;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+      padding-top: 10px;
+      z-index: 10;
+    }
+    .footer {
+      color: #ddd;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .footer a {
+      color: #ccc;
+      text-decoration: underline;
+    }
+    .the-icons {
+      font-size: 14px;
+      line-height: 24px;
+    }
+    .switch {
+      position: absolute;
+      right: 0;
+      bottom: 10px;
+      color: #666;
+    }
+    .switch input {
+      margin-right: 0.3em;
+    }
+    .codesOn .i-name {
+      display: none;
+    }
+    .codesOn .i-code {
+      display: inline;
+    }
+    .i-code {
+      display: none;
+    }
+    @font-face {
+      font-family: 'glok';
+      src: url('./font/glok.eot?93904936');
+      src: url('./font/glok.eot?93904936#iefix') format('embedded-opentype'),
+           url('./font/glok.woff?93904936') format('woff'),
+           url('./font/glok.ttf?93904936') format('truetype'),
+           url('./font/glok.svg?93904936#glok') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    .demo-icon {
+      font-family: "glok";
+      font-style: normal;
+      font-weight: normal;
+      speak: never;
+     
+      display: inline-block;
+      text-decoration: inherit;
+      width: 1em;
+      margin-right: .2em;
+      text-align: center;
+      /* opacity: .8; */
+     
+      /* For safety - reset parent styles, that can break glyph codes*/
+      font-variant: normal;
+      text-transform: none;
+     
+      /* fix buttons height, for twitter bootstrap */
+      line-height: 1em;
+     
+      /* Animation center compensation - margins should be symmetric */
+      /* remove if not needed */
+      margin-left: .2em;
+     
+      /* You can be more comfortable with increased icons size */
+      /* font-size: 120%; */
+     
+      /* Font smoothing. That was taken from TWBS */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+     
+      /* Uncomment for 3D effect */
+      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    }
+    </style>
+    <link rel="stylesheet" href="css/animation.css"><!--[if IE 7]><link rel="stylesheet" href="css/" + font.fontname + "-ie7.css"><![endif]-->
+    <script>
+      function toggleCodes(on) {
+        var obj = document.getElementById('icons');
+      
+        if (on) {
+          obj.className += ' codesOn';
+        } else {
+          obj.className = obj.className.replace(' codesOn', '');
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container header">
+      <h1>glok <small>font demo</small></h1>
+      <label class="switch">
+        <input type="checkbox" onclick="toggleCodes(this.checked)">show codes
+      </label>
+    </div>
+    <div class="container" id="icons">
+      <div class="row">
+        <div class="span3" title="Code: 0xe971">
+          <i class="demo-icon glok-icone-expandir-para-cima">&#xe971;</i> <span class="i-name">glok-icone-expandir-para-cima</span><span class="i-code">0xe971</span>
+        </div>
+        <div class="span3" title="Code: 0xe972">
+          <i class="demo-icon glok-icone-expandir-para-baixo">&#xe972;</i> <span class="i-name">glok-icone-expandir-para-baixo</span><span class="i-code">0xe972</span>
+        </div>
+        <div class="span3" title="Code: 0xe973">
+          <i class="demo-icon glok-icone-expandir-para esquerda">&#xe973;</i> <span class="i-name">glok-icone-expandir-para esquerda</span><span class="i-code">0xe973</span>
+        </div>
+        <div class="span3" title="Code: 0xe974">
+          <i class="demo-icon glok-icone-expandir-para-direita">&#xe974;</i> <span class="i-name">glok-icone-expandir-para-direita</span><span class="i-code">0xe974</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef79">
+          <i class="demo-icon glok-icone-clientes">&#xef79;</i> <span class="i-name">glok-icone-clientes</span><span class="i-code">0xef79</span>
+        </div>
+        <div class="span3" title="Code: 0xef7a">
+          <i class="demo-icon glok-icone-contatos">&#xef7a;</i> <span class="i-name">glok-icone-contatos</span><span class="i-code">0xef7a</span>
+        </div>
+        <div class="span3" title="Code: 0xef7b">
+          <i class="demo-icon glok-icone-sugestões">&#xef7b;</i> <span class="i-name">glok-icone-sugestões</span><span class="i-code">0xef7b</span>
+        </div>
+        <div class="span3" title="Code: 0xef7c">
+          <i class="demo-icon glok-icone-circulo">&#xef7c;</i> <span class="i-name">glok-icone-circulo</span><span class="i-code">0xef7c</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef7d">
+          <i class="demo-icon glok-icone-pesquisa">&#xef7d;</i> <span class="i-name">glok-icone-pesquisa</span><span class="i-code">0xef7d</span>
+        </div>
+        <div class="span3" title="Code: 0xef7e">
+          <i class="demo-icon glok-icone-exportar">&#xef7e;</i> <span class="i-name">glok-icone-exportar</span><span class="i-code">0xef7e</span>
+        </div>
+        <div class="span3" title="Code: 0xef80">
+          <i class="demo-icon glok-icone-pessoa-juridica">&#xef80;</i> <span class="i-name">glok-icone-pessoa-juridica</span><span class="i-code">0xef80</span>
+        </div>
+        <div class="span3" title="Code: 0xef81">
+          <i class="demo-icon glok-icone-pessoa-fisica">&#xef81;</i> <span class="i-name">glok-icone-pessoa-fisica</span><span class="i-code">0xef81</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef82">
+          <i class="demo-icon glok-icone-documento-e-mala">&#xef82;</i> <span class="i-name">glok-icone-documento-e-mala</span><span class="i-code">0xef82</span>
+        </div>
+        <div class="span3" title="Code: 0xef83">
+          <i class="demo-icon glok-icone-produtos">&#xef83;</i> <span class="i-name">glok-icone-produtos</span><span class="i-code">0xef83</span>
+        </div>
+        <div class="span3" title="Code: 0xef84">
+          <i class="demo-icon glok-icone-serviços">&#xef84;</i> <span class="i-name">glok-icone-serviços</span><span class="i-code">0xef84</span>
+        </div>
+        <div class="span3" title="Code: 0xef85">
+          <i class="demo-icon glok-icone-sair-1">&#xef85;</i> <span class="i-name">glok-icone-sair-1</span><span class="i-code">0xef85</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef86">
+          <i class="demo-icon glok-icone-subir">&#xef86;</i> <span class="i-name">glok-icone-subir</span><span class="i-code">0xef86</span>
+        </div>
+        <div class="span3" title="Code: 0xef87">
+          <i class="demo-icon glok-icone-substituir">&#xef87;</i> <span class="i-name">glok-icone-substituir</span><span class="i-code">0xef87</span>
+        </div>
+        <div class="span3" title="Code: 0xef88">
+          <i class="demo-icon glok-icone-documentos">&#xef88;</i> <span class="i-name">glok-icone-documentos</span><span class="i-code">0xef88</span>
+        </div>
+        <div class="span3" title="Code: 0xef89">
+          <i class="demo-icon glok-icone-unidade">&#xef89;</i> <span class="i-name">glok-icone-unidade</span><span class="i-code">0xef89</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef8a">
+          <i class="demo-icon glok-icone-caixa-verificado">&#xef8a;</i> <span class="i-name">glok-icone-caixa-verificado</span><span class="i-code">0xef8a</span>
+        </div>
+        <div class="span3" title="Code: 0xef8b">
+          <i class="demo-icon glok-icone-caixa-selecionada">&#xef8b;</i> <span class="i-name">glok-icone-caixa-selecionada</span><span class="i-code">0xef8b</span>
+        </div>
+        <div class="span3" title="Code: 0xef8c">
+          <i class="demo-icon glok-icone-caixa-sem-seleção">&#xef8c;</i> <span class="i-name">glok-icone-caixa-sem-seleção</span><span class="i-code">0xef8c</span>
+        </div>
+        <div class="span3" title="Code: 0xef8d">
+          <i class="demo-icon glok-icone-verificado">&#xef8d;</i> <span class="i-name">glok-icone-verificado</span><span class="i-code">0xef8d</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef8e">
+          <i class="demo-icon glok-icone-circulo-verificado">&#xef8e;</i> <span class="i-name">glok-icone-circulo-verificado</span><span class="i-code">0xef8e</span>
+        </div>
+        <div class="span3" title="Code: 0xef90">
+          <i class="demo-icon glok-icone-editar-colunas">&#xef90;</i> <span class="i-name">glok-icone-editar-colunas</span><span class="i-code">0xef90</span>
+        </div>
+        <div class="span3" title="Code: 0xef91">
+          <i class="demo-icon glok-icone-excluir">&#xef91;</i> <span class="i-name">glok-icone-excluir</span><span class="i-code">0xef91</span>
+        </div>
+        <div class="span3" title="Code: 0xef92">
+          <i class="demo-icon glok-icone-editar">&#xef92;</i> <span class="i-name">glok-icone-editar</span><span class="i-code">0xef92</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef93">
+          <i class="demo-icon glok-icone-tela-principal">&#xef93;</i> <span class="i-name">glok-icone-tela-principal</span><span class="i-code">0xef93</span>
+        </div>
+        <div class="span3" title="Code: 0xef94">
+          <i class="demo-icon glok-icone-menu">&#xef94;</i> <span class="i-name">glok-icone-menu</span><span class="i-code">0xef94</span>
+        </div>
+        <div class="span3" title="Code: 0xef95">
+          <i class="demo-icon glok-icone-adicionar">&#xef95;</i> <span class="i-name">glok-icone-adicionar</span><span class="i-code">0xef95</span>
+        </div>
+        <div class="span3" title="Code: 0xef96">
+          <i class="demo-icon glok-icone-fechar-menu">&#xef96;</i> <span class="i-name">glok-icone-fechar-menu</span><span class="i-code">0xef96</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span3" title="Code: 0xef97">
+          <i class="demo-icon glok-icone-atualizar">&#xef97;</i> <span class="i-name">glok-icone-atualizar</span><span class="i-code">0xef97</span>
+        </div>
+        <div class="span3" title="Code: 0xf730">
+          <i class="demo-icon glok-icone-sair">&#xf730;</i> <span class="i-name">glok-icone-sair</span><span class="i-code">0xf730</span>
+        </div>
+        <div class="span3" title="Code: 0xf732">
+          <i class="demo-icon glok-icone-favorito">&#xf732;</i> <span class="i-name">glok-icone-favorito</span><span class="i-code">0xf732</span>
+        </div>
+      </div>
+    </div>
+    <div class="container footer">Generated by <a href="https://fontello.com">fontello.com</a></div>
+  </body>
+</html>

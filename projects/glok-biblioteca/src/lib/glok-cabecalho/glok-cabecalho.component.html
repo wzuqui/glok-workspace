@@ -1,0 +1,20 @@
+<div class="menu">
+  <glok-menu [menu]="menu"></glok-menu>
+</div>
+
+<div class="logo">
+  <img src="{{ logoCabecalho }}" height="30" width="60" alt="Logotipo" />
+</div>
+
+<div class="abas">
+  <glok-abas [itens]="abas"> </glok-abas>
+</div>
+
+<div class="perfil">
+  <glok-perfil
+    [emailUsuario]="emailUsuario"
+    [imagemUsuario]="imagemUsuario"
+    [nomeUsuario]="nomeUsuario"
+    [unidade]="nomeEmpresa"
+  ></glok-perfil>
+</div>

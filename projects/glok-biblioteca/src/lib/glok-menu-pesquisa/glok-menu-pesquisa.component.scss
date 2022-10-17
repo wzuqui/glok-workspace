@@ -1,0 +1,26 @@
+
+:host {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.borda-pesquisa {
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid var(--texto-secundario);
+  display: flex;
+  height: 52px;
+  margin-top: 20px;
+  padding-left: 10px;
+  width: 490px;
+}
+
+.icone {
+  color: var(--primario);
+  font-size: 24px;
+  margin-right: 6px;
+  float: left;
+  width: 8%;
+}

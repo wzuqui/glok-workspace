@@ -1,23 +1,26 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'glok-botao',
   templateUrl: './glok-botao.component.html',
-  styleUrls: ['./glok-botao.component.scss']
+  styleUrls: ['./glok-botao.component.scss'],
 })
 export class GlokBotaoComponent implements OnInit {
-  @Input() public texto: string = '';
+  @Input() public icone = '';
+  @Input() public texto = '';
   @Output() public clicou = new EventEmitter<Event>();
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  public ngOnInit(): void {}
 
   @HostListener('click', ['$event'])
   public acaoClicou(evento: Event) {
     this.clicou.emit(evento);
   }
-
-
 }

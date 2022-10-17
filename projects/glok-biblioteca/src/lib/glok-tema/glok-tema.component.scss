@@ -1,0 +1,384 @@
+:root,
+:host[tema="safe-claro"] {
+  --fundo-barra: #e9e9e9;
+  --fundo-erro: #ebadad;
+  --fundo-sucesso: #b6ebad;
+  --fundo: #ffffff;
+  --hover: #e6e5f4;
+  --primario: #5753b6;
+  --selecionado: #bdbaff;
+  --texto-desabilitado: #c2c2c2;
+  --texto-erro: #d21c1c;
+  --texto-principal: #333333;
+  --texto-secundario: #858585;
+  --texto-sucesso: #1a700a;
+  --cinza3: #dfdfdf;
+  font-family: "Work Sans", sans-serif;
+}
+
+:host[tema="safe-claro"] .logo-grande {
+  width: 480px;
+  height: 200px;
+  background: url(../../../assets/imagens/logo_grande_1.svg) no-repeat;
+  display: block;
+  margin: 0px auto;
+}
+
+:host[tema="safe-claro"] .logo-header {
+  height: 30px;
+  margin-left: 40px;
+  width: 60px;
+  background: url(../../../assets/imagens/logo_pequena_1.svg) no-repeat;
+  background-size: contain;
+}
+
+:host[tema="safe-claro"] .borda-pesquisa {
+  margin-top: 20px;
+  padding-left: 10px;
+  width: 490px;
+  height: 52px;
+  border: 2px solid var(--texto-secundario);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+:host[tema="safe-claro"] .icone-pesquisa {
+  font-size: 24px;
+  color: var(--primario);
+}
+
+:host[tema="safe-claro"] .container-popup {
+  width: 332px;
+  height: 172px;
+  background-color: var(--fundo);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  padding-top: 16px;
+  padding-left: 12px;
+  display: flex;
+}
+
+:host[tema="safe-claro"] .informacoes-usuario {
+  margin-left: 7px;
+}
+
+:host[tema="safe-claro"] .container-popup-mudar-unidade {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+
+:host[tema="safe-claro"] .container-popup-mudar-unidade .mudar-unidade {
+  color: var(--primario);
+  cursor: pointer;
+}
+
+:host[tema="safe-claro"] .container-popup-mudar-unidade i {
+  font-size: 18px;
+  color: var(--primario);
+}
+
+:host[tema="safe-claro"] .sair-popup {
+  color: var(--texto-erro);
+  display: flex;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+:host[tema="safe-escuro"] {
+  --fundo-barra: #232323;
+  --fundo-erro: #ebadad;
+  --fundo-sucesso: #b6ebad;
+  --fundo: #333333;
+  --hover: #47475f;
+  --primario: #7094ff;
+  --selecionado: #27304c;
+  --texto-desabilitado: #666666;
+  --texto-erro: #d21c1c;
+  --texto-principal: #ffffff;
+  --texto-secundario: #858585;
+  --texto-sucesso: #1a700a;
+  --cinza3: #323232;
+  font-family: "Work Sans", sans-serif;
+}
+
+:host[tema="safe-escuro"] .logo-grande {
+  width: 480px;
+  height: 200px;
+  background: url(../../../assets/imagens/logo_grande_dark_1.svg) no-repeat;
+  display: block;
+  margin: 0px auto;
+}
+
+:host[tema="safe-escuro"] .logo-header {
+  height: 30px;
+  margin-left: 40px;
+  width: 60px;
+  background: url(../../../assets/imagens/logo_pequena_dark_1.svg) no-repeat;
+  background-size: contain;
+}
+
+:host[tema="safe-escuro"] .borda-pesquisa {
+  margin-top: 20px;
+  padding-left: 10px;
+  width: 490px;
+  height: 52px;
+  border: 2px solid var(--texto-secundario);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+:host[tema="safe-escuro"] .icone-pesquisa {
+  font-size: 24px;
+  color: var(--primario);
+}
+
+:host,
+body {
+  background: var(--fundo);
+  color: var(--texto-principal);
+}
+
+:host[tema="safe-escuro"] .container-popup {
+  width: 332px;
+  height: 172px;
+  background-color: var(--fundo);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  padding-top: 16px;
+  padding-left: 12px;
+  display: flex;
+}
+
+:host[tema="safe-escuro"] .informacoes-usuario {
+  margin-left: 7px;
+}
+
+
+
+
+
+:host[tema="safe-escuro"] .container-popup-mudar-unidade {
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+
+:host[tema="safe-escuro"] .container-popup-mudar-unidade .mudar-unidade {
+  color: var(--primario);
+  cursor: pointer;
+}
+
+:host[tema="safe-escuro"] .container-popup-mudar-unidade i {
+  font-size: 18px;
+  color: var(--primario);
+}
+
+:host[tema="safe-escuro"] .sair-popup {
+  color: var(--texto-erro);
+  display: flex;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.modo-escuro {
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+}
+
+//barra de pesquisa
+
+.dx-scrollview-bottom-pocket {
+  display: none;
+}
+
+.dx-scrollview-top-pocket {
+  display: none;
+}
+
+.dx-scrollview-loadpanel {
+  display: none;
+}
+
+.dx-selectbox-container {
+  position: relative;
+  width: 478px;
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item .dx-state-active {
+  background-color: var(--primario);
+  color: var(--texto-principal);
+}
+
+.dx-list .dx-empty-message,
+.dx-list-item {
+  border-top: 1px solid transparent;
+  color: var(--texto-principal);
+}
+
+.dx-dropdowneditor-button.dx-state-active .dx-dropdowneditor-icon,
+.dx-dropdowneditor.dx-dropdowneditor-active .dx-dropdowneditor-icon {
+  background-color: var(--hover);
+  border-color: transparent;
+  color: var(--primario);
+  opacity: 1;
+}
+
+.dx-dropdowneditor-icon {
+  color: var(--primario);
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-active {
+  background-color: var(--hover);
+  color: var(--texto-principal);
+}
+
+.dx-dropdowneditor.dx-state-active .dx-dropdowneditor-icon,
+.dx-dropdowneditor.dx-state-hover:not(.dx-custom-button-hovered) .dx-dropdowneditor-icon {
+  background-color: var(--hover);
+  border-color: transparent;
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused {
+  background-color: var(--hover);
+  color: var(--texto-principal);
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-hover {
+  background-color: var(--hover);
+  color: var(--texto-principal);
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected {
+  background-color: var(--selecionado);
+  color: var(--texto-principal);
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-list-item-selected.dx-state-hover:not(.dx-state-focused) {
+  background-color: var(--hover);
+
+  color: var(--texto-principal);
+}
+
+.dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused.dx-list-item-selected {
+  background-color: var(--hover);
+
+  color: var(--texto-principal);
+}
+
+.dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
+  display: flex;
+}
+
+.dx-texteditor.dx-editor-outlined {
+  background: var(--fundo);
+  border: 2px solid var(--texto-secundario);
+  border-radius: 10px;
+}
+
+.dx-selectbox-popup-wrapper .dx-list {
+  background-color: var(--fundo);
+}
+
+.dx-popup-wrapper>.dx-overlay-content {
+  border: 0px transparent;
+}
+
+.dx-popup-wrapper>.dx-overlay-content {
+  background: transparent;
+}
+
+.dx-texteditor-input {
+  margin: 0;
+  padding: 7px 9px 8px;
+  background: rgba(0, 0, 0, 0);
+  color: var(--texto-principal);
+  font-size: 1em;
+  border-radius: 4px;
+  min-height: 34px;
+}
+
+.dx-texteditor.dx-state-focused.dx-editor-outlined {
+  border-color: var(--texto-secundario);
+}
+
+.dx-dropdownlist-popup-wrapper .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item-content {
+  display: flex;
+  align-items: center;
+}
+
+//fim da barra de pesquisa
+
+// fontes
+.cabecalho1 {
+  color: var(--texto-principal);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.fonte-cabecalho-modal-confirmacao {
+  color: var(--texto-principal);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.cabecalho2 {
+  color: var(--texto-principal);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fonte-titulo {
+  color: var(--texto-principal);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.fonte-subtitulo {
+  color: var(--texto-principal);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.fonte-menu {
+  color: var(--texto-principal);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.fonte-avisos {
+  color: var(--texto-principal);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.fonte-titulo-grid {
+  color: var(--texto-principal);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fonte-etiqueta {
+  color: var(--texto-principal);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.fonte-corpo {
+  color: var(--texto-principal);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.fonte-corpo2 {
+  color: var(--texto-principal);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.fonte-legenda {
+  color: var(--texto-principal);
+  font-size: 10px;
+  font-weight: 400;
+}
