@@ -1,5 +1,13 @@
-/*
- * Public API Surface of glok-biblioteca
- */
-
+export * from './lib/glok-abas/glok-aba.type';
+export * from './lib/glok-abas/glok-abas.component';
+export * from './lib/glok-abas/glok-abas.service';
 export * from './lib/glok-biblioteca.module';
+export * from './lib/glok-botao/glok-botao.component';
+export * from './lib/glok-cabecalho/glok-cabecalho.component';
+export * from './lib/glok-lista-paineis-atalho/glok-lista-paineis-atalho.component';
+export * from './lib/glok-lista-paineis-atalho/glok-painel.type';
+export * from './lib/glok-menu-pesquisa/glok-menu-pesquisa.component';
+export * from './lib/glok-menu/glok-menu.component';
+export * from './lib/glok-menu/glok-menu.type';
+export * from './lib/glok-perfil/glok-perfil.component';
+export * from './lib/glok-tema/glok-tema.component';
